@@ -125,8 +125,11 @@ function initCanvas() {
 
   const ctx = canvas.getContext('2d');
 
-  // ── Bottom project-number strip ──────────────────────────────────────────
+  // ── Bottom project-number navigation ──────────────────────────────────────
+
   const navStrip = document.getElementById('nav-strip');
+
+  navStrip.innerHTML = '';
 
   PROJECTS.forEach(project => {
     const link = document.createElement('a');
@@ -138,14 +141,50 @@ function initCanvas() {
     navStrip.appendChild(link);
   });
 
-  const NAV_H = navStrip.offsetHeight || 44;
+  let NAV_H = navStrip.offsetHeight || 44;
 
-  function pr(seed) {
+  // ── Elastic-string anchors ────────────────────────────────────────────────
+
+  let stringAnchors = [];
+
+  function updateStringAnchors() {
+    const canvasRect = canvas.getBoundingClientRect();
+    const navRect = navStrip.getBoundingClientRect();
+    const numberElements = navStrip.querySelectorAll('.nav-num');
+
+    NAV_H = navStrip.offsetHeight || 44;
+
+    stringAnchors = Array.from(numberElements).map(numberElement => {
+      const numberRect = numberElement.getBoundingClientRect();
+
+      return {
+        x:
+          numberRect.left -
+          canvasRect.left +
+          numberRect.width / 2,
+
+        y:
+          navRect.top -
+          canvasRect.top +
+          1
+      };
+    });
+  }
+
+  requestAnimationFrame(updateStringAnchors);
+
+  // ── Shared helpers ────────────────────────────────────────────────────────
+
+  function pseudoRandom(seed) {
     const value = Math.sin(seed + 1) * 10000;
     return value - Math.floor(value);
   }
 
-  // Card size.
+  function clamp(value, minimum, maximum) {
+    return Math.max(minimum, Math.min(maximum, value));
+  }
+
+  // Card dimensions.
   const CW = Math.round(
     Math.min(
       Math.max(W * 0.2, 155),
@@ -155,20 +194,20 @@ function initCanvas() {
 
   const CH = Math.round(CW * 1.28);
 
-  function buildWF(seed) {
+  function buildWireframe(seed) {
     const lines = [];
 
     for (let i = 0; i < 160; i++) {
-      const ax = pr(seed + i) * CW;
-      const ay = pr(seed + i + 500) * CH;
+      const ax = pseudoRandom(seed + i) * CW;
+      const ay = pseudoRandom(seed + i + 500) * CH;
 
       const bx =
         ax +
-        (pr(seed + i + 1000) - 0.5) * 58;
+        (pseudoRandom(seed + i + 1000) - 0.5) * 58;
 
       const by =
         ay +
-        (pr(seed + i + 1500) - 0.5) * 58;
+        (pseudoRandom(seed + i + 1500) - 0.5) * 58;
 
       const length = Math.sqrt(
         (bx - ax) ** 2 +
@@ -188,7 +227,8 @@ function initCanvas() {
     return lines;
   }
 
-  // ── Load project images ──────────────────────────────────────────────────
+  // ── Load images ───────────────────────────────────────────────────────────
+
   const loadedImages = {};
 
   PROJECTS.forEach(project => {
@@ -202,7 +242,6 @@ function initCanvas() {
     loadedImages[project.num] = image;
   });
 
-  // ── Load overlay images ──────────────────────────────────────────────────
   const loadedOverlays = {};
 
   PROJECTS.forEach(project => {
@@ -216,14 +255,12 @@ function initCanvas() {
     loadedOverlays[project.num] = image;
   });
 
-  /*
-   * Fixed layered composition.
-   *
-   * x and y are measured relative to the centre of the screen.
-   * Smaller differences create more overlap.
-   *
-   * r is the resting rotation in degrees.
-   */
+  // ── Resting project composition ───────────────────────────────────────────
+  //
+  // x and y are relative to the centre of the composition.
+  // Smaller differences create more overlap.
+  // r is the resting rotation in degrees.
+
   const CARD_LAYOUT = [
     { x: -1.45, y: -0.48, r: -7 },
     { x: -0.72, y: -0.82, r: 5 },
@@ -240,14 +277,13 @@ function initCanvas() {
     { x: 0.58, y: 0.68, r: -3 }
   ];
 
-  // ── Build project cards ──────────────────────────────────────────────────
   const cards = PROJECTS.map((project, index) => {
     const seed = index * 197;
     const layout = CARD_LAYOUT[index];
 
     return {
       p: project,
-      wf: buildWF(seed),
+      wf: buildWireframe(seed),
       seed,
 
       x: 0,
@@ -270,27 +306,23 @@ function initCanvas() {
     };
   });
 
-  /*
-   * Position all cards around a fixed central composition.
-   * Cards are tightened automatically on smaller screens.
-   */
   function layoutCards(snap = false) {
     const safeTop = Math.max(118, H * 0.14);
     const safeBottom = Math.max(150, NAV_H + 102);
 
-    const usableH = Math.max(
+    const usableHeight = Math.max(
       CH + 20,
       H - safeTop - safeBottom
     );
 
-    const xRange = 2.88 * CW * 0.7;
-    const yRange = 1.62 * CH * 0.42;
+    const horizontalExtent = 2.88 * CW * 0.7;
+    const verticalExtent = 1.62 * CH * 0.42;
 
     const scaleX = Math.min(
       1,
       Math.max(
         0.48,
-        (W - CW - 28) / xRange
+        (W - CW - 28) / horizontalExtent
       )
     );
 
@@ -298,18 +330,19 @@ function initCanvas() {
       1,
       Math.max(
         0.58,
-        (usableH - CH) / yRange
+        (usableHeight - CH) / verticalExtent
       )
     );
 
     const layoutScale = Math.min(scaleX, scaleY);
 
-    const centerX = W * 0.5;
-    const centerY = safeTop + usableH * 0.5;
+    const centreX = W * 0.5;
+    const centreY = safeTop + usableHeight * 0.5;
 
-    const minY = safeTop;
-    const maxY = Math.max(
-      minY,
+    const minimumY = safeTop;
+
+    const maximumY = Math.max(
+      minimumY,
       H - safeBottom - CH
     );
 
@@ -320,29 +353,25 @@ function initCanvas() {
       const previousAnchorY = card.anchorY;
 
       card.anchorX =
-        centerX -
+        centreX -
         CW / 2 +
         slot.x * CW * 0.7 * layoutScale;
 
       card.anchorY =
-        centerY -
+        centreY -
         CH / 2 +
         slot.y * CH * 0.42 * layoutScale;
 
-      card.anchorX = Math.max(
+      card.anchorX = clamp(
+        card.anchorX,
         12,
-        Math.min(
-          W - CW - 12,
-          card.anchorX
-        )
+        W - CW - 12
       );
 
-      card.anchorY = Math.max(
-        minY,
-        Math.min(
-          maxY,
-          card.anchorY
-        )
+      card.anchorY = clamp(
+        card.anchorY,
+        minimumY,
+        maximumY
       );
 
       if (
@@ -360,6 +389,8 @@ function initCanvas() {
   }
 
   layoutCards(true);
+
+  // ── Card drawing ──────────────────────────────────────────────────────────
 
   function drawImageCover(
     drawContext,
@@ -403,14 +434,12 @@ function initCanvas() {
 
   function drawCard(
     card,
-    drawContext,
+    drawContext = ctx,
     overrideX,
     overrideY,
-    scale,
+    scale = 1,
     forceReveal
   ) {
-    drawContext = drawContext || ctx;
-
     const x =
       overrideX !== undefined
         ? overrideX
@@ -420,8 +449,6 @@ function initCanvas() {
       overrideY !== undefined
         ? overrideY
         : card.y;
-
-    scale = scale || 1;
 
     const revealAmount =
       forceReveal !== undefined
@@ -450,7 +477,7 @@ function initCanvas() {
     );
 
     if (
-      !forceReveal &&
+      forceReveal === undefined &&
       drawContext === ctx
     ) {
       drawContext.rotate(
@@ -465,12 +492,13 @@ function initCanvas() {
       -CH / 2
     );
 
-    // Clip image content to the card.
+    // Clip project image and overlay to card.
     drawContext.save();
+
+    drawContext.beginPath();
     drawContext.rect(0, 0, CW, CH);
     drawContext.clip();
 
-    // ── Layer 1: project image ──────────────────────────────────────────────
     const projectImage = loadedImages[p.num];
 
     if (
@@ -530,7 +558,6 @@ function initCanvas() {
       );
     }
 
-    // ── Layer 2: overlay PNG ────────────────────────────────────────────────
     const overlayImage =
       loadedOverlays[p.num];
 
@@ -558,7 +585,7 @@ function initCanvas() {
 
     drawContext.restore();
 
-    // ── Wireframe lines ─────────────────────────────────────────────────────
+    // Wireframe.
     const wireframeAlpha = Math.max(
       0,
       1 - revealAmount * 0.8
@@ -585,8 +612,8 @@ function initCanvas() {
         drawContext.beginPath();
 
         drawContext.arc(
-          pr(seed + i + 3000) * CW,
-          pr(seed + i + 4000) * CH,
+          pseudoRandom(seed + i + 3000) * CW,
+          pseudoRandom(seed + i + 4000) * CH,
           0.9,
           0,
           Math.PI * 2
@@ -613,7 +640,7 @@ function initCanvas() {
       });
     }
 
-    // ── Hover border ────────────────────────────────────────────────────────
+    // Hover border.
     if (hovered || selected) {
       drawContext.strokeStyle =
         `rgba(200,120,130,${0.2 + revealAmount * 0.5})`;
@@ -628,7 +655,7 @@ function initCanvas() {
       );
     }
 
-    // ── Indicator dot ───────────────────────────────────────────────────────
+    // Card dot.
     drawContext.beginPath();
 
     drawContext.arc(
@@ -644,7 +671,7 @@ function initCanvas() {
 
     drawContext.fill();
 
-    // ── Project number ──────────────────────────────────────────────────────
+    // Project number.
     drawContext.font = '8px monospace';
 
     drawContext.fillStyle =
@@ -656,7 +683,7 @@ function initCanvas() {
       CH - 28
     );
 
-    // ── Project title ───────────────────────────────────────────────────────
+    // Project title.
     drawContext.font = '9px monospace';
 
     drawContext.fillStyle =
@@ -670,7 +697,7 @@ function initCanvas() {
     words.forEach(word => {
       const testLine =
         currentLine
-          ? currentLine + ' ' + word
+          ? `${currentLine} ${word}`
           : word;
 
       if (
@@ -699,7 +726,7 @@ function initCanvas() {
         );
       });
 
-    // ── Category ────────────────────────────────────────────────────────────
+    // Category.
     drawContext.font = '7px monospace';
 
     drawContext.fillStyle =
@@ -744,7 +771,232 @@ function initCanvas() {
     );
   }
 
-  // ── Selected-card overlay ────────────────────────────────────────────────
+  // ── Elastic strings ───────────────────────────────────────────────────────
+
+  function getCardStringPoint(card) {
+    const centreX = card.x + CW / 2;
+    const centreY = card.y + CH / 2;
+
+    const angle =
+      card.rot * Math.PI / 180;
+
+    // Attach slightly inside the lower edge.
+    const localDistance =
+      CH * 0.43;
+
+    return {
+      x:
+        centreX -
+        Math.sin(angle) *
+        localDistance,
+
+      y:
+        centreY +
+        Math.cos(angle) *
+        localDistance
+    };
+  }
+
+  function drawElasticStrings() {
+    cards.forEach((card, index) => {
+      const start = stringAnchors[index];
+
+      if (!start) return;
+
+      const end =
+        getCardStringPoint(card);
+
+      const dx = end.x - start.x;
+      const dy = end.y - start.y;
+
+      const stringLength =
+        Math.sqrt(
+          dx * dx +
+          dy * dy
+        );
+
+      if (stringLength < 1) return;
+
+      const movementX =
+        card.x - card.anchorX;
+
+      const movementY =
+        card.y - card.anchorY;
+
+      const movementDistance =
+        Math.sqrt(
+          movementX * movementX +
+          movementY * movementY
+        );
+
+      const tension = clamp(
+        movementDistance /
+          REPEL_DISTANCE,
+        0,
+        1
+      );
+
+      const directionX =
+        dx / stringLength;
+
+      const directionY =
+        dy / stringLength;
+
+      const perpendicularX =
+        -directionY;
+
+      const perpendicularY =
+        directionX;
+
+      const alternatingDirection =
+        index % 2 === 0
+          ? -1
+          : 1;
+
+      // Initial resting curvature.
+      const restingBend =
+        alternatingDirection *
+        (10 + (index % 3) * 4);
+
+      // Additional bend caused by movement.
+      const movementBend =
+        movementX * 0.14 +
+        card.vx * 2.4;
+
+      const bend =
+        restingBend +
+        movementBend;
+
+      const control1X =
+        start.x +
+        dx * 0.28 +
+        perpendicularX *
+          bend *
+          0.35;
+
+      const control1Y =
+        start.y +
+        dy * 0.28 +
+        perpendicularY *
+          bend *
+          0.35;
+
+      const control2X =
+        start.x +
+        dx * 0.72 +
+        perpendicularX *
+          bend;
+
+      const control2Y =
+        start.y +
+        dy * 0.72 +
+        perpendicularY *
+          bend;
+
+      const active =
+        card.hovered ||
+        card.selected;
+
+      const alpha =
+        active
+          ? 0.8
+          : 0.2 + tension * 0.45;
+
+      const lineWidth =
+        active
+          ? 1
+          : 0.42 + tension * 0.65;
+
+      ctx.save();
+
+      // Faint outer glow.
+      ctx.beginPath();
+
+      ctx.moveTo(
+        start.x,
+        start.y
+      );
+
+      ctx.bezierCurveTo(
+        control1X,
+        control1Y,
+        control2X,
+        control2Y,
+        end.x,
+        end.y
+      );
+
+      ctx.strokeStyle =
+        `rgba(200,120,130,${alpha * 0.12})`;
+
+      ctx.lineWidth =
+        lineWidth + 4;
+
+      ctx.stroke();
+
+      // Main string.
+      ctx.beginPath();
+
+      ctx.moveTo(
+        start.x,
+        start.y
+      );
+
+      ctx.bezierCurveTo(
+        control1X,
+        control1Y,
+        control2X,
+        control2Y,
+        end.x,
+        end.y
+      );
+
+      ctx.strokeStyle =
+        `rgba(200,120,130,${alpha})`;
+
+      ctx.lineWidth =
+        lineWidth;
+
+      ctx.stroke();
+
+      // Attachment point above bottom number.
+      ctx.beginPath();
+
+      ctx.arc(
+        start.x,
+        start.y,
+        active ? 2.4 : 1.4,
+        0,
+        Math.PI * 2
+      );
+
+      ctx.fillStyle =
+        `rgba(200,120,130,${Math.min(0.95, alpha + 0.15)})`;
+
+      ctx.fill();
+
+      // Attachment point on project card.
+      ctx.beginPath();
+
+      ctx.arc(
+        end.x,
+        end.y,
+        active ? 2.7 : 1.4,
+        0,
+        Math.PI * 2
+      );
+
+      ctx.fillStyle =
+        `rgba(220,140,150,${Math.min(1, alpha + 0.18)})`;
+
+      ctx.fill();
+
+      ctx.restore();
+    });
+  }
+
+  // ── Project overlay ───────────────────────────────────────────────────────
+
   const overlay =
     document.getElementById('card-overlay');
 
@@ -786,14 +1038,17 @@ function initCanvas() {
     const overlayHeight =
       Math.round(CH * scale);
 
-    overlayCanvas.width = overlayWidth;
-    overlayCanvas.height = overlayHeight;
+    overlayCanvas.width =
+      overlayWidth;
+
+    overlayCanvas.height =
+      overlayHeight;
 
     overlayCanvas.style.width =
-      overlayWidth + 'px';
+      `${overlayWidth}px`;
 
     overlayCanvas.style.height =
-      overlayHeight + 'px';
+      `${overlayHeight}px`;
 
     const overlayContext =
       overlayCanvas.getContext('2d');
@@ -852,13 +1107,17 @@ function initCanvas() {
     hideOverlay
   );
 
-  overlay.addEventListener('click', event => {
-    if (event.target === overlay) {
-      hideOverlay();
+  overlay.addEventListener(
+    'click',
+    event => {
+      if (event.target === overlay) {
+        hideOverlay();
+      }
     }
-  });
+  );
 
-  // ── Grid view: unchanged ─────────────────────────────────────────────────
+  // ── Grid view ─────────────────────────────────────────────────────────────
+
   const gridView =
     document.getElementById('grid-view');
 
@@ -903,7 +1162,8 @@ function initCanvas() {
       const info =
         document.createElement('div');
 
-      info.className = 'grid-cell-info';
+      info.className =
+        'grid-cell-info';
 
       info.innerHTML =
         `<span class="grid-cell-num">${project.num}</span>` +
@@ -913,9 +1173,13 @@ function initCanvas() {
       cell.appendChild(image);
       cell.appendChild(info);
 
-      cell.addEventListener('click', () => {
-        window.location.href = project.href;
-      });
+      cell.addEventListener(
+        'click',
+        () => {
+          window.location.href =
+            project.href;
+        }
+      );
 
       let touchStartY = 0;
 
@@ -933,10 +1197,11 @@ function initCanvas() {
       cell.addEventListener(
         'touchend',
         event => {
-          const moved = Math.abs(
-            event.changedTouches[0].clientY -
-            touchStartY
-          );
+          const moved =
+            Math.abs(
+              event.changedTouches[0].clientY -
+              touchStartY
+            );
 
           if (moved > 8) return;
 
@@ -972,28 +1237,35 @@ function initCanvas() {
       'SHOW GRID';
   }
 
-  showAllBtn.addEventListener('click', () => {
-    if (
-      gridView.classList.contains('visible')
-    ) {
-      hideGridView();
-    } else {
-      showGridView();
+  showAllBtn.addEventListener(
+    'click',
+    () => {
+      if (
+        gridView.classList.contains('visible')
+      ) {
+        hideGridView();
+      } else {
+        showGridView();
+      }
     }
-  });
+  );
 
   gridCloseBtn.addEventListener(
     'click',
     hideGridView
   );
 
-  gridView.addEventListener('click', event => {
-    if (event.target === gridView) {
-      hideGridView();
+  gridView.addEventListener(
+    'click',
+    event => {
+      if (event.target === gridView) {
+        hideGridView();
+      }
     }
-  });
+  );
 
-  // ── Mouse interaction ────────────────────────────────────────────────────
+  // ── Mouse interaction ─────────────────────────────────────────────────────
+
   let mouseX = W / 2;
   let mouseY = H / 2;
   let mouseActive = false;
@@ -1017,11 +1289,7 @@ function initCanvas() {
       dragStartX = event.clientX;
       dragStartY = event.clientY;
 
-      /*
-       * Prefer the card already identified as hovered.
-       * Otherwise search from the top of the stack downward.
-       */
-      const currentlyHovered =
+      const existingHoveredCard =
         cards.find(card =>
           card.hovered &&
           hitTest(
@@ -1032,8 +1300,8 @@ function initCanvas() {
         );
 
       const candidates =
-        currentlyHovered
-          ? [currentlyHovered]
+        existingHoveredCard
+          ? [existingHoveredCard]
           : [...cards].reverse();
 
       for (const card of candidates) {
@@ -1071,16 +1339,16 @@ function initCanvas() {
       mouseActive = true;
 
       curEl.style.left =
-        mouseX + 'px';
+        `${mouseX}px`;
 
       curEl.style.top =
-        mouseY + 'px';
+        `${mouseY}px`;
 
       ring.style.left =
-        mouseX + 'px';
+        `${mouseX}px`;
 
       ring.style.top =
-        mouseY + 'px';
+        `${mouseY}px`;
 
       if (dragCard) {
         dragCard.x =
@@ -1095,10 +1363,6 @@ function initCanvas() {
         return;
       }
 
-      /*
-       * Only one card is considered hovered.
-       * Other cards still move away from the pointer.
-       */
       let hoveredCard =
         cards.find(card =>
           card.hovered &&
@@ -1149,7 +1413,7 @@ function initCanvas() {
     }
   );
 
-  canvas.addEventListener(
+  window.addEventListener(
     'mouseup',
     event => {
       if (!dragCard) return;
@@ -1168,10 +1432,6 @@ function initCanvas() {
       ) {
         showOverlay(dragCard);
       } else {
-        /*
-         * Do not throw the card.
-         * It will smoothly return to its anchor.
-         */
         dragCard.vx = 0;
         dragCard.vy = 0;
         dragCard.hovered = false;
@@ -1206,7 +1466,8 @@ function initCanvas() {
     }
   );
 
-  // ── Touch interaction ────────────────────────────────────────────────────
+  // ── Touch interaction ─────────────────────────────────────────────────────
+
   let touchDragCard = null;
   let touchDragOffsetX = 0;
   let touchDragOffsetY = 0;
@@ -1328,9 +1589,6 @@ function initCanvas() {
       if (!touchMoved) {
         showOverlay(touchDragCard);
       } else {
-        /*
-         * Return the card to its original position.
-         */
         touchDragCard.vx = 0;
         touchDragCard.vy = 0;
         touchDragCard.hovered = false;
@@ -1344,39 +1602,24 @@ function initCanvas() {
     }
   );
 
-  // ── Proximity movement settings ──────────────────────────────────────────
+  // ── Movement settings ─────────────────────────────────────────────────────
 
-  /*
-   * Larger value:
-   * cards start moving while the cursor is farther away.
-   */
+  // How far from the cursor the cards begin moving.
   const REPEL_RADIUS = Math.max(
     210,
     CW * 1.45
   );
 
-  /*
-   * Larger value:
-   * cards move farther away from the cursor.
-   */
+  // Maximum distance cards move away from the cursor.
   const REPEL_DISTANCE = Math.min(
     150,
     CW * 0.82
   );
 
-  /*
-   * Larger value:
-   * cards move and return more quickly.
-   */
+  // Strength of the spring toward the target.
   const SPRING = 0.075;
 
-  /*
-   * Lower value:
-   * movement stops more quickly.
-   *
-   * Higher value:
-   * movement feels softer and more elastic.
-   */
+  // Lower values stop faster; higher values feel more elastic.
   const DAMPING = 0.76;
 
   function getProximityTarget(card, index) {
@@ -1384,19 +1627,16 @@ function initCanvas() {
     let targetY = card.anchorY;
     let targetRotation = card.baseRot;
 
+    const interfaceBlocked =
+      overlay.classList.contains('visible') ||
+      gridView.classList.contains('visible');
+
     if (
       mouseActive &&
       !card.hovered &&
       !card.selected &&
-      !overlay.classList.contains('visible') &&
-      !gridView.classList.contains('visible')
+      !interfaceBlocked
     ) {
-      /*
-       * Calculate distance from the cursor to the card's
-       * original anchor position, not its moving position.
-       *
-       * This makes the movement stable and prevents drifting.
-       */
       const cardCentreX =
         card.anchorX + CW / 2;
 
@@ -1428,15 +1668,12 @@ function initCanvas() {
           distance = 1;
         }
 
-        /*
-         * Smooth proximity curve:
-         * 1 close to the cursor and 0 at the outer radius.
-         */
         const normalized =
           1 -
           distance /
           REPEL_RADIUS;
 
+        // Smoothstep curve.
         const influence =
           normalized *
           normalized *
@@ -1467,17 +1704,11 @@ function initCanvas() {
       }
     }
 
-    /*
-     * Straighten the card directly beneath the cursor.
-     * Surrounding cards separate from it.
-     */
+    // The project directly under the cursor straightens.
     if (card.hovered) {
       targetRotation = 0;
     }
 
-    /*
-     * Keep cards mostly inside the visible area.
-     */
     const edgeAllowance =
       CW * 0.12;
 
@@ -1487,19 +1718,18 @@ function initCanvas() {
         NAV_H + 94
       );
 
-    targetX = Math.max(
+    targetX = clamp(
+      targetX,
       -edgeAllowance,
-      Math.min(
-        W - CW + edgeAllowance,
-        targetX
-      )
+      W - CW + edgeAllowance
     );
 
-    targetY = Math.max(
+    targetY = clamp(
+      targetY,
       104,
-      Math.min(
-        H - lowerReserve - CH,
-        targetY
+      Math.max(
+        104,
+        H - lowerReserve - CH
       )
     );
 
@@ -1510,14 +1740,11 @@ function initCanvas() {
     };
   }
 
-  // ── Animation loop ───────────────────────────────────────────────────────
+  // ── Animation loop ────────────────────────────────────────────────────────
+
   function animationLoop() {
     requestAnimationFrame(animationLoop);
 
-    /*
-     * Clear the previous frame completely.
-     * This prevents visual trails from appearing.
-     */
     ctx.clearRect(
       0,
       0,
@@ -1546,11 +1773,6 @@ function initCanvas() {
           index
         );
 
-      /*
-       * Spring movement toward either:
-       * - the card's original anchor position, or
-       * - its temporary cursor-repel position.
-       */
       card.vx +=
         (
           target.x -
@@ -1579,10 +1801,9 @@ function initCanvas() {
         0.1;
     });
 
-    /*
-     * Draw the active card last so it stays above
-     * the surrounding overlapping cards.
-     */
+    // Strings appear beneath the project cards.
+    drawElasticStrings();
+
     const activeCard =
       dragCard ||
       touchDragCard ||
@@ -1602,7 +1823,8 @@ function initCanvas() {
 
   animationLoop();
 
-  // ── Window resize ────────────────────────────────────────────────────────
+  // ── Resize ────────────────────────────────────────────────────────────────
+
   window.addEventListener(
     'resize',
     () => {
@@ -1613,6 +1835,10 @@ function initCanvas() {
       canvas.height = H;
 
       layoutCards(false);
+
+      requestAnimationFrame(
+        updateStringAnchors
+      );
     }
   );
 }
@@ -1639,10 +1865,17 @@ function initMenu() {
     );
 
   function closeMenus() {
-    menuDropdown.classList.remove('open');
-    menuButton.classList.remove('active');
+    menuDropdown.classList.remove(
+      'open'
+    );
 
-    mobileMenuDropdown.classList.remove('open');
+    menuButton.classList.remove(
+      'active'
+    );
+
+    mobileMenuDropdown.classList.remove(
+      'open'
+    );
 
     if (mobileMenuButton) {
       mobileMenuButton.classList.remove(
