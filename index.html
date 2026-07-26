@@ -433,24 +433,38 @@ if (mobileHint) setTimeout(() => { mobileHint.style.opacity = '0'; }, 4000);
 // ── Render loop ───────────────────────────────────────────────────────────────
 const clock = new THREE.Clock();
 
+// Radians per second.
+// 0.02 = approximately one full rotation every 5 minutes.
+const AUTO_ROTATE_SPEED = 0.02;
+
 (function animate() {
   requestAnimationFrame(animate);
-  const t = clock.getElapsedTime();
+
+  const dt = clock.getDelta();
+  const t = clock.elapsedTime;
+
+  // Slowly orbit automatically when the user is not interacting.
+  if (!isDragging && !t1 && !t2) {
+    sph.theta += AUTO_ROTATE_SPEED * dt;
+    updateCamera();
+  }
 
   nodeObjects.forEach((n, i) => {
     n.ring.lookAt(camera.position);
     n.ring.scale.setScalar(1 + Math.sin(t * 2 + i * 1.2) * 0.12);
+
     const hov = hoveredNode === n;
-    n.dot.material.opacity  = hov ? 1.0  : 0.75;
+    n.dot.material.opacity  = hov ? 1.0 : 0.75;
     n.dot.scale.setScalar(hov ? 1.4 : 1.0);
     n.ring.material.opacity = hov ? 0.95 : 0.5;
   });
 
   if (hoveredNode) updateNodeLabel();
 
-  // Update mobile node label positions every frame
+  // Update mobile node label positions every frame.
   nodeObjects.forEach(n => {
     if (!n.mobileLabel) return;
+
     const screen = worldToScreen(n.group.position);
     n.mobileLabel.style.left = screen.x + 'px';
     n.mobileLabel.style.top  = (screen.y - 18) + 'px';
