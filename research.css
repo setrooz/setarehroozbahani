@@ -2,7 +2,7 @@
 * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
 
 body {
-  background: #5d5c5d;
+  background: #393539;
   min-height: 100vh;
   font-family: monospace;
   color: rgba(255,255,255,0.7);
@@ -101,7 +101,7 @@ body {
   position: absolute;
   top: 4.5rem; left: 50%; transform: translateX(-50%);
   font-size: 9px; letter-spacing: 0.35em;
-  color: rgba(200,120,130,0.9);
+  color: rgb(200, 120, 129);
   pointer-events: none; z-index: 5; white-space: nowrap;
 }
 
