@@ -126,7 +126,7 @@ body {
   pointer-events: none; z-index: 5;
 }
 #axis-y { left: 1.5rem; top: 5.5rem; }
-#axis-x { right: 1.5rem; bottom: 5.5rem; }
+#axis-x { right: 1.2rem; bottom: 3rem; }
 
 /* ── Nodes ───────────────────────────────────────────────────────────────── */
 .node {
