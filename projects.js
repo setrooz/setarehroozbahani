@@ -1,466 +1,1717 @@
 const PROJECTS = [
-  { num:'01', title:'The Spheres of Influence',           cat:'Master Studio · 2022',              href:'project-1.html', imgSrc:'images/Spheres of Influence_00.jpg', overlaySrc:'images/Spheres of Influenceoverlay.png', color:[89,44,56]  },
-  { num:'02', title:'Learning from Lungomare G.M', cat:'Master Thesis · 2022–2023',          href:'project-2.html', imgSrc:'images/LLGM.jpeg',                   overlaySrc:'images/LLGMoverlay.png', color:[42,30,60]  },
-  { num:'03', title:'Prof. CO',                    cat:'Architectural Practice · 2023–2026', href:'project-3.html', imgSrc:'images/CAS01.png',                   overlaySrc:'images/CAS01overlay.png', color:[26,46,60]  },
-  { num:'04', title:'Prof. ZP',                    cat:'Architectural Practice · 2023–2026', href:'project-4.html', imgSrc:'images/cieo02.png',                  overlaySrc:'images/cieo02overlay.png', color:[26,60,40]  },
-  { num:'05', title:'Prof. KT',                    cat:'Architectural Practice · 2023–2026', href:'project-5.html', imgSrc:'images/cieo03.png',                  overlaySrc:'images/cieo04overlay.png', color:[60,26,14]  },
-  { num:'06', title:'Prof. SJ',                    cat:'Architectural Practice · 2023–2026', href:'project-6.html', imgSrc:'images/SJ.png',                  overlaySrc:'images/SJoverlay.png', color:[60,26,14]  },
-  { num:'07', title:'Prof. DE',                    cat:'Architectural Practice · 2023–2026', href:'project-7.html', imgSrc:'images/det.png',                  overlaySrc:'images/detoverlay.png', color:[60,26,14]  },
-  { num:'08', title:'Prof. LV ',                          cat:'Architectural Traineeship · 2023',   href:'project-8.html', imgSrc:'images/PVH01.jpg',                                   overlaySrc:'images/PVH01overlay.png', color:[30,40,70]  },
-  { num:'09', title:'Prof. BT ',                          cat:'Architectural Photography · 2023',   href:'project-9.html', imgSrc:'images/BT.png',                                   overlaySrc:'images/BToverlay.png', color:[30,40,70]  },
-  { num:'10', title:'Extended Liminal',                   cat:'Summer School · 2022',               href:'project-10.html', imgSrc:'images/Extended Liminal_00.jpg',      overlaySrc:'images/Extended Liminaloverlay.png', color:[60,30,48]  },
-  { num:'11', title:'Forbidden to Play',                   cat:'Studio 1 · 2021',               href:'project-11.html', imgSrc:'images/lep03.png',      overlaySrc:'images/lepoverlay02.png', color:[255,255,255]  },
+  {
+    num: '01',
+    title: 'The Spheres of Influence',
+    cat: 'Master Studio · 2022',
+    href: 'project-1.html',
+    imgSrc: 'images/Spheres of Influence_00.jpg',
+    overlaySrc: 'images/Spheres of Influenceoverlay.png',
+    color: [89, 44, 56]
+  },
+  {
+    num: '02',
+    title: 'Learning from Lungomare G.M',
+    cat: 'Master Thesis · 2022–2023',
+    href: 'project-2.html',
+    imgSrc: 'images/LLGM.jpeg',
+    overlaySrc: 'images/LLGMoverlay.png',
+    color: [42, 30, 60]
+  },
+  {
+    num: '03',
+    title: 'Prof. CO',
+    cat: 'Architectural Practice · 2023–2026',
+    href: 'project-3.html',
+    imgSrc: 'images/CAS01.png',
+    overlaySrc: 'images/CAS01overlay.png',
+    color: [26, 46, 60]
+  },
+  {
+    num: '04',
+    title: 'Prof. ZP',
+    cat: 'Architectural Practice · 2023–2026',
+    href: 'project-4.html',
+    imgSrc: 'images/cieo02.png',
+    overlaySrc: 'images/cieo02overlay.png',
+    color: [26, 60, 40]
+  },
+  {
+    num: '05',
+    title: 'Prof. KT',
+    cat: 'Architectural Practice · 2023–2026',
+    href: 'project-5.html',
+    imgSrc: 'images/cieo03.png',
+    overlaySrc: 'images/cieo04overlay.png',
+    color: [60, 26, 14]
+  },
+  {
+    num: '06',
+    title: 'Prof. SJ',
+    cat: 'Architectural Practice · 2023–2026',
+    href: 'project-6.html',
+    imgSrc: 'images/SJ.png',
+    overlaySrc: 'images/SJoverlay.png',
+    color: [60, 26, 14]
+  },
+  {
+    num: '07',
+    title: 'Prof. DE',
+    cat: 'Architectural Practice · 2023–2026',
+    href: 'project-7.html',
+    imgSrc: 'images/det.png',
+    overlaySrc: 'images/detoverlay.png',
+    color: [60, 26, 14]
+  },
+  {
+    num: '08',
+    title: 'Prof. LV',
+    cat: 'Architectural Traineeship · 2023',
+    href: 'project-8.html',
+    imgSrc: 'images/PVH01.jpg',
+    overlaySrc: 'images/PVH01overlay.png',
+    color: [30, 40, 70]
+  },
+  {
+    num: '09',
+    title: 'Prof. BT',
+    cat: 'Architectural Photography · 2023',
+    href: 'project-9.html',
+    imgSrc: 'images/BT.png',
+    overlaySrc: 'images/BToverlay.png',
+    color: [30, 40, 70]
+  },
+  {
+    num: '10',
+    title: 'Extended Liminal',
+    cat: 'Summer School · 2022',
+    href: 'project-10.html',
+    imgSrc: 'images/Extended Liminal_00.jpg',
+    overlaySrc: 'images/Extended Liminaloverlay.png',
+    color: [60, 30, 48]
+  },
+  {
+    num: '11',
+    title: 'Forbidden to Play',
+    cat: 'Studio 1 · 2021',
+    href: 'project-11.html',
+    imgSrc: 'images/lep03.png',
+    overlaySrc: 'images/lepoverlay02.png',
+    color: [255, 255, 255]
+  }
 ];
 
 initCanvas();
 initMenu();
 
 function initCanvas() {
-  const field  = document.getElementById('project-field');
+  const field = document.getElementById('project-field');
   const canvas = document.getElementById('project-canvas');
-  const curEl  = document.getElementById('cur');
-  const ring   = document.getElementById('cur-ring');
-  const isTouch = ('ontouchstart' in window);
-  if (isTouch) { curEl.style.display='none'; ring.style.display='none'; field.style.cursor='default'; }
+  const curEl = document.getElementById('cur');
+  const ring = document.getElementById('cur-ring');
+
+  const isTouch = 'ontouchstart' in window;
+
+  if (isTouch) {
+    curEl.style.display = 'none';
+    ring.style.display = 'none';
+    field.style.cursor = 'default';
+  }
 
   let W = window.innerWidth;
   let H = window.innerHeight;
-  canvas.width = W; canvas.height = H;
+
+  canvas.width = W;
+  canvas.height = H;
+
   const ctx = canvas.getContext('2d');
 
-  // nav strip
+  // ── Bottom project-number strip ──────────────────────────────────────────
   const navStrip = document.getElementById('nav-strip');
-  PROJECTS.forEach(p => {
-    const a = document.createElement('a');
-    a.className = 'nav-item'; a.href = p.href;
-    a.innerHTML = `<span class="nav-num">${p.num}</span>`;
-    navStrip.appendChild(a);
+
+  PROJECTS.forEach(project => {
+    const link = document.createElement('a');
+
+    link.className = 'nav-item';
+    link.href = project.href;
+    link.innerHTML = `<span class="nav-num">${project.num}</span>`;
+
+    navStrip.appendChild(link);
   });
+
   const NAV_H = navStrip.offsetHeight || 44;
-  const PLAYFIELD_H = H - NAV_H;
 
-  function pr(s) { const x = Math.sin(s+1)*10000; return x-Math.floor(x); }
+  function pr(seed) {
+    const value = Math.sin(seed + 1) * 10000;
+    return value - Math.floor(value);
+  }
 
-  // uniform card size — bigger
-  const CW = Math.round(Math.min(Math.max(W * 0.2, 155), 195));
+  // Card size.
+  const CW = Math.round(
+    Math.min(
+      Math.max(W * 0.2, 155),
+      195
+    )
+  );
+
   const CH = Math.round(CW * 1.28);
 
   function buildWF(seed) {
     const lines = [];
+
     for (let i = 0; i < 160; i++) {
-      const ax = pr(seed+i)*CW, ay = pr(seed+i+500)*CH;
-      const bx = ax+(pr(seed+i+1000)-0.5)*58, by = ay+(pr(seed+i+1500)-0.5)*58;
-      const len = Math.sqrt((bx-ax)**2+(by-ay)**2);
-      if (len>3 && len<50) lines.push({ax,ay,bx,by});
+      const ax = pr(seed + i) * CW;
+      const ay = pr(seed + i + 500) * CH;
+
+      const bx =
+        ax +
+        (pr(seed + i + 1000) - 0.5) * 58;
+
+      const by =
+        ay +
+        (pr(seed + i + 1500) - 0.5) * 58;
+
+      const length = Math.sqrt(
+        (bx - ax) ** 2 +
+        (by - ay) ** 2
+      );
+
+      if (length > 3 && length < 50) {
+        lines.push({
+          ax,
+          ay,
+          bx,
+          by
+        });
+      }
     }
+
     return lines;
   }
 
-  // load images
+  // ── Load project images ──────────────────────────────────────────────────
   const loadedImages = {};
-  PROJECTS.forEach(p => {
-    if (!p.imgSrc) return;
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.src = p.imgSrc;
-    loadedImages[p.num] = img;
+
+  PROJECTS.forEach(project => {
+    if (!project.imgSrc) return;
+
+    const image = new Image();
+
+    image.crossOrigin = 'anonymous';
+    image.src = project.imgSrc;
+
+    loadedImages[project.num] = image;
   });
 
-  // load overlay PNGs
+  // ── Load overlay images ──────────────────────────────────────────────────
   const loadedOverlays = {};
-  PROJECTS.forEach(p => {
-    if (!p.overlaySrc) return;
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.src = p.overlaySrc;
-    loadedOverlays[p.num] = img;
+
+  PROJECTS.forEach(project => {
+    if (!project.overlaySrc) return;
+
+    const image = new Image();
+
+    image.crossOrigin = 'anonymous';
+    image.src = project.overlaySrc;
+
+    loadedOverlays[project.num] = image;
   });
 
-  // build cards
-  const cards = PROJECTS.map((p, idx) => {
-    const seed  = idx * 197;
-    const wf    = buildWF(seed);
-    const speed = 3.5 + pr(idx*23)*3.5;
-    const angle = pr(idx*89)*Math.PI*2;
+  /*
+   * Fixed layered composition.
+   *
+   * x and y are measured relative to the centre of the screen.
+   * Smaller differences create more overlap.
+   *
+   * r is the resting rotation in degrees.
+   */
+  const CARD_LAYOUT = [
+    { x: -1.45, y: -0.48, r: -7 },
+    { x: -0.72, y: -0.82, r: 5 },
+    { x: 0.02, y: -0.90, r: -2 },
+    { x: 0.78, y: -0.78, r: 6 },
+    { x: 1.43, y: -0.42, r: -6 },
+
+    { x: -1.18, y: 0.16, r: 4 },
+    { x: -0.43, y: 0.06, r: -5 },
+    { x: 0.34, y: 0.00, r: 3 },
+    { x: 1.08, y: 0.18, r: -4 },
+
+    { x: -0.52, y: 0.72, r: 6 },
+    { x: 0.58, y: 0.68, r: -3 }
+  ];
+
+  // ── Build project cards ──────────────────────────────────────────────────
+  const cards = PROJECTS.map((project, index) => {
+    const seed = index * 197;
+    const layout = CARD_LAYOUT[index];
+
     return {
-      p, wf, seed,
-      x: pr(idx*41)*(W-CW*0.4)-CW*0.1,
-      y: pr(idx*67)*(PLAYFIELD_H-CH*0.4)-CH*0.1,
-      vx: Math.cos(angle)*speed,
-      vy: Math.sin(angle)*speed,
-      rot: (pr(idx*13)-0.5)*42,
-      vr:  (pr(idx*19)-0.5)*0.85,
-      revealAmt:0, targetReveal:0,
-      hovered:false, selected:false,
+      p: project,
+      wf: buildWF(seed),
+      seed,
+
+      x: 0,
+      y: 0,
+
+      anchorX: 0,
+      anchorY: 0,
+
+      vx: 0,
+      vy: 0,
+
+      baseRot: layout.r,
+      rot: layout.r,
+
+      revealAmt: 0,
+      targetReveal: 0,
+
+      hovered: false,
+      selected: false
     };
   });
 
-  function drawImageCover(dc, img, x, y, w, h) {
-    const iw=img.naturalWidth, ih=img.naturalHeight;
-    if (!iw||!ih) return;
-    const s=Math.max(w/iw,h/ih);
-    const sw=w/s, sh=h/s, sx=(iw-sw)/2, sy=(ih-sh)/2;
-    dc.drawImage(img,sx,sy,sw,sh,x,y,w,h);
+  /*
+   * Position all cards around a fixed central composition.
+   * Cards are tightened automatically on smaller screens.
+   */
+  function layoutCards(snap = false) {
+    const safeTop = Math.max(118, H * 0.14);
+    const safeBottom = Math.max(150, NAV_H + 102);
+
+    const usableH = Math.max(
+      CH + 20,
+      H - safeTop - safeBottom
+    );
+
+    const xRange = 2.88 * CW * 0.7;
+    const yRange = 1.62 * CH * 0.42;
+
+    const scaleX = Math.min(
+      1,
+      Math.max(
+        0.48,
+        (W - CW - 28) / xRange
+      )
+    );
+
+    const scaleY = Math.min(
+      1,
+      Math.max(
+        0.58,
+        (usableH - CH) / yRange
+      )
+    );
+
+    const layoutScale = Math.min(scaleX, scaleY);
+
+    const centerX = W * 0.5;
+    const centerY = safeTop + usableH * 0.5;
+
+    const minY = safeTop;
+    const maxY = Math.max(
+      minY,
+      H - safeBottom - CH
+    );
+
+    cards.forEach((card, index) => {
+      const slot = CARD_LAYOUT[index];
+
+      const previousAnchorX = card.anchorX;
+      const previousAnchorY = card.anchorY;
+
+      card.anchorX =
+        centerX -
+        CW / 2 +
+        slot.x * CW * 0.7 * layoutScale;
+
+      card.anchorY =
+        centerY -
+        CH / 2 +
+        slot.y * CH * 0.42 * layoutScale;
+
+      card.anchorX = Math.max(
+        12,
+        Math.min(
+          W - CW - 12,
+          card.anchorX
+        )
+      );
+
+      card.anchorY = Math.max(
+        minY,
+        Math.min(
+          maxY,
+          card.anchorY
+        )
+      );
+
+      if (
+        snap ||
+        !Number.isFinite(card.x) ||
+        !Number.isFinite(card.y)
+      ) {
+        card.x = card.anchorX;
+        card.y = card.anchorY;
+      } else {
+        card.x += card.anchorX - previousAnchorX;
+        card.y += card.anchorY - previousAnchorY;
+      }
+    });
   }
 
-  function drawCard(c, dc, ox, oy, sc, forceReveal) {
-    dc = dc || ctx;
-    const x  = ox !== undefined ? ox : c.x;
-    const y  = oy !== undefined ? oy : c.y;
-    sc = sc || 1;
-    const ra = forceReveal !== undefined ? forceReveal : c.revealAmt;
-    const {p, wf, seed, rot, hovered, selected} = c;
-    const [r,g,b] = p.color;
-    const W2 = CW*sc, H2 = CH*sc;
+  layoutCards(true);
 
-    dc.save();
-    dc.translate(x+W2/2, y+H2/2);
-    if (!forceReveal && dc===ctx) dc.rotate(rot*Math.PI/180);
-    dc.scale(sc,sc);
-    dc.translate(-CW/2,-CH/2);
+  function drawImageCover(
+    drawContext,
+    image,
+    x,
+    y,
+    width,
+    height
+  ) {
+    const imageWidth = image.naturalWidth;
+    const imageHeight = image.naturalHeight;
 
-   // clip to card bounds
-    dc.save();
-    dc.rect(0,0,CW,CH);
-    dc.clip();
+    if (!imageWidth || !imageHeight) return;
 
-    // LAYER 1 — photo always visible, brighter on reveal
-    const img = loadedImages[p.num];
-    if (img && img.complete && img.naturalWidth>0) {
-      dc.globalAlpha = 0.0 + ra * 0.9;
-      drawImageCover(dc,img,0,0,CW,CH);
-      dc.globalAlpha = 1;
-      const vig = dc.createLinearGradient(0,CH*0.55,0,CH);
-      vig.addColorStop(0,'rgba(10,6,8,0)');
-      vig.addColorStop(1,`rgba(10,6,8,${0.55+ra*0.2})`);
-      dc.fillStyle=vig; dc.fillRect(0,CH*0.55,CW,CH*0.45);
+    const scale = Math.max(
+      width / imageWidth,
+      height / imageHeight
+    );
+
+    const sourceWidth = width / scale;
+    const sourceHeight = height / scale;
+
+    const sourceX =
+      (imageWidth - sourceWidth) / 2;
+
+    const sourceY =
+      (imageHeight - sourceHeight) / 2;
+
+    drawContext.drawImage(
+      image,
+      sourceX,
+      sourceY,
+      sourceWidth,
+      sourceHeight,
+      x,
+      y,
+      width,
+      height
+    );
+  }
+
+  function drawCard(
+    card,
+    drawContext,
+    overrideX,
+    overrideY,
+    scale,
+    forceReveal
+  ) {
+    drawContext = drawContext || ctx;
+
+    const x =
+      overrideX !== undefined
+        ? overrideX
+        : card.x;
+
+    const y =
+      overrideY !== undefined
+        ? overrideY
+        : card.y;
+
+    scale = scale || 1;
+
+    const revealAmount =
+      forceReveal !== undefined
+        ? forceReveal
+        : card.revealAmt;
+
+    const {
+      p,
+      wf,
+      seed,
+      rot,
+      hovered,
+      selected
+    } = card;
+
+    const [r, g, b] = p.color;
+
+    const renderedWidth = CW * scale;
+    const renderedHeight = CH * scale;
+
+    drawContext.save();
+
+    drawContext.translate(
+      x + renderedWidth / 2,
+      y + renderedHeight / 2
+    );
+
+    if (
+      !forceReveal &&
+      drawContext === ctx
+    ) {
+      drawContext.rotate(
+        rot * Math.PI / 180
+      );
+    }
+
+    drawContext.scale(scale, scale);
+
+    drawContext.translate(
+      -CW / 2,
+      -CH / 2
+    );
+
+    // Clip image content to the card.
+    drawContext.save();
+    drawContext.rect(0, 0, CW, CH);
+    drawContext.clip();
+
+    // ── Layer 1: project image ──────────────────────────────────────────────
+    const projectImage = loadedImages[p.num];
+
+    if (
+      projectImage &&
+      projectImage.complete &&
+      projectImage.naturalWidth > 0
+    ) {
+      drawContext.globalAlpha =
+        revealAmount * 0.9;
+
+      drawImageCover(
+        drawContext,
+        projectImage,
+        0,
+        0,
+        CW,
+        CH
+      );
+
+      drawContext.globalAlpha = 1;
+
+      const vignette =
+        drawContext.createLinearGradient(
+          0,
+          CH * 0.55,
+          0,
+          CH
+        );
+
+      vignette.addColorStop(
+        0,
+        'rgba(10,6,8,0)'
+      );
+
+      vignette.addColorStop(
+        1,
+        `rgba(10,6,8,${0.55 + revealAmount * 0.2})`
+      );
+
+      drawContext.fillStyle = vignette;
+
+      drawContext.fillRect(
+        0,
+        CH * 0.55,
+        CW,
+        CH * 0.45
+      );
     } else {
-      dc.fillStyle=`rgba(${r},${g},${b},${0.08+ra*0.25})`; dc.fillRect(0,0,CW,CH);
+      drawContext.fillStyle =
+        `rgba(${r},${g},${b},${0.08 + revealAmount * 0.25})`;
+
+      drawContext.fillRect(
+        0,
+        0,
+        CW,
+        CH
+      );
     }
 
-    // LAYER 2 — overlay PNG, fades on reveal
-    const ov = loadedOverlays[p.num];
-    if (ov && ov.complete && ov.naturalWidth>0) {
-      dc.globalAlpha = Math.max(0.08, 0.7 - ra * 0.65);
-      drawImageCover(dc,ov,0,0,CW,CH);
-      dc.globalAlpha = 1;
+    // ── Layer 2: overlay PNG ────────────────────────────────────────────────
+    const overlayImage =
+      loadedOverlays[p.num];
+
+    if (
+      overlayImage &&
+      overlayImage.complete &&
+      overlayImage.naturalWidth > 0
+    ) {
+      drawContext.globalAlpha = Math.max(
+        0.08,
+        0.7 - revealAmount * 0.65
+      );
+
+      drawImageCover(
+        drawContext,
+        overlayImage,
+        0,
+        0,
+        CW,
+        CH
+      );
+
+      drawContext.globalAlpha = 1;
     }
 
-    dc.restore();
+    drawContext.restore();
 
-    // wireframe
-    const wA = Math.max(0,1-ra*0.8);
-    if (wA>0.015) {
-      dc.lineWidth=0.5;
-      wf.forEach(l=>{
-        dc.strokeStyle=`rgba(${Math.min(255,r+120)|0},${Math.min(255,g+100)|0},${Math.min(255,b+110)|0},${wA*0.15})`;
-        dc.beginPath(); dc.moveTo(l.ax,l.ay); dc.lineTo(l.bx,l.by); dc.stroke();
+    // ── Wireframe lines ─────────────────────────────────────────────────────
+    const wireframeAlpha = Math.max(
+      0,
+      1 - revealAmount * 0.8
+    );
+
+    if (wireframeAlpha > 0.015) {
+      drawContext.lineWidth = 0.5;
+
+      wf.forEach(line => {
+        drawContext.strokeStyle =
+          `rgba(` +
+          `${Math.min(255, r + 120) | 0},` +
+          `${Math.min(255, g + 100) | 0},` +
+          `${Math.min(255, b + 110) | 0},` +
+          `${wireframeAlpha * 0.15})`;
+
+        drawContext.beginPath();
+        drawContext.moveTo(line.ax, line.ay);
+        drawContext.lineTo(line.bx, line.by);
+        drawContext.stroke();
       });
-      for (let i=0;i<24;i++) {
-        dc.beginPath();
-        dc.arc(pr(seed+i+3000)*CW,pr(seed+i+4000)*CH,0.9,0,Math.PI*2);
-        dc.fillStyle=`rgba(220,140,150,${wA*0.65})`; dc.fill();
+
+      for (let i = 0; i < 24; i++) {
+        drawContext.beginPath();
+
+        drawContext.arc(
+          pr(seed + i + 3000) * CW,
+          pr(seed + i + 4000) * CH,
+          0.9,
+          0,
+          Math.PI * 2
+        );
+
+        drawContext.fillStyle =
+          `rgba(220,140,150,${wireframeAlpha * 0.65})`;
+
+        drawContext.fill();
       }
     }
-    if (ra>0.35) {
-      dc.lineWidth=0.4;
-      wf.slice(0,50).forEach(l=>{
-        dc.strokeStyle=`rgba(255,225,235,${ra*0.1})`;
-        dc.beginPath(); dc.moveTo(l.ax,l.ay); dc.lineTo(l.bx,l.by); dc.stroke();
+
+    if (revealAmount > 0.35) {
+      drawContext.lineWidth = 0.4;
+
+      wf.slice(0, 50).forEach(line => {
+        drawContext.strokeStyle =
+          `rgba(255,225,235,${revealAmount * 0.1})`;
+
+        drawContext.beginPath();
+        drawContext.moveTo(line.ax, line.ay);
+        drawContext.lineTo(line.bx, line.by);
+        drawContext.stroke();
       });
     }
 
-    // border
-    if (hovered||selected) {
-      dc.strokeStyle=`rgba(200,120,130,${0.2+ra*0.5})`; dc.lineWidth=0.5;
-      dc.strokeRect(0.5,0.5,CW-1,CH-1);
+    // ── Hover border ────────────────────────────────────────────────────────
+    if (hovered || selected) {
+      drawContext.strokeStyle =
+        `rgba(200,120,130,${0.2 + revealAmount * 0.5})`;
+
+      drawContext.lineWidth = 0.5;
+
+      drawContext.strokeRect(
+        0.5,
+        0.5,
+        CW - 1,
+        CH - 1
+      );
     }
 
-    // dot
-    dc.beginPath();
-    dc.arc(7,7,hovered||selected?3.2:1.8,0,Math.PI*2);
-    dc.fillStyle=`rgba(200,120,130,${0.45+ra*0.5})`; dc.fill();
+    // ── Indicator dot ───────────────────────────────────────────────────────
+    drawContext.beginPath();
 
-    // number
-    dc.font='8px monospace';
-    dc.fillStyle=`rgba(220,140,150,${0.85+ra*0.15})`;
-    dc.fillText(p.num,7,CH-28);
+    drawContext.arc(
+      7,
+      7,
+      hovered || selected ? 3.2 : 1.8,
+      0,
+      Math.PI * 2
+    );
 
-    // title
-    dc.font='9px monospace';
-    dc.fillStyle=`rgba(255,255,255,${0.75+ra*0.25})`;
-    const words=p.title.split(' ');
-    let ln='',lns=[];
-    words.forEach(w=>{
-      const t=ln?ln+' '+w:w;
-      if(dc.measureText(t).width>CW-14&&ln){lns.push(ln);ln=w;}else ln=t;
+    drawContext.fillStyle =
+      `rgba(200,120,130,${0.45 + revealAmount * 0.5})`;
+
+    drawContext.fill();
+
+    // ── Project number ──────────────────────────────────────────────────────
+    drawContext.font = '8px monospace';
+
+    drawContext.fillStyle =
+      `rgba(220,140,150,${0.85 + revealAmount * 0.15})`;
+
+    drawContext.fillText(
+      p.num,
+      7,
+      CH - 28
+    );
+
+    // ── Project title ───────────────────────────────────────────────────────
+    drawContext.font = '9px monospace';
+
+    drawContext.fillStyle =
+      `rgba(255,255,255,${0.75 + revealAmount * 0.25})`;
+
+    const words = p.title.split(' ');
+    const titleLines = [];
+
+    let currentLine = '';
+
+    words.forEach(word => {
+      const testLine =
+        currentLine
+          ? currentLine + ' ' + word
+          : word;
+
+      if (
+        drawContext.measureText(testLine).width >
+          CW - 14 &&
+        currentLine
+      ) {
+        titleLines.push(currentLine);
+        currentLine = word;
+      } else {
+        currentLine = testLine;
+      }
     });
-    if(ln)lns.push(ln);
-    lns.slice(0,2).forEach((l,i)=>dc.fillText(l.toUpperCase(),7,CH-16+i*11));
 
-    // cat
-    dc.font='7px monospace';
-    dc.fillStyle=`rgba(255,255,255,${0.45+ra*0.25})`;
-    dc.fillText(p.cat,7,CH-4);
+    if (currentLine) {
+      titleLines.push(currentLine);
+    }
 
-    dc.restore();
+    titleLines
+      .slice(0, 2)
+      .forEach((line, index) => {
+        drawContext.fillText(
+          line.toUpperCase(),
+          7,
+          CH - 16 + index * 11
+        );
+      });
+
+    // ── Category ────────────────────────────────────────────────────────────
+    drawContext.font = '7px monospace';
+
+    drawContext.fillStyle =
+      `rgba(255,255,255,${0.45 + revealAmount * 0.25})`;
+
+    drawContext.fillText(
+      p.cat,
+      7,
+      CH - 4
+    );
+
+    drawContext.restore();
   }
 
-  function hitTest(c, mx, my) {
-    const cx=c.x+CW/2, cy=c.y+CH/2;
-    const rad=-c.rot*Math.PI/180;
-    const dx=mx-cx, dy=my-cy;
-    const lx=dx*Math.cos(rad)-dy*Math.sin(rad)+CW/2;
-    const ly=dx*Math.sin(rad)+dy*Math.cos(rad)+CH/2;
-    const pad=10;
-    return lx>=-pad&&lx<=CW+pad&&ly>=-pad&&ly<=CH+pad;
+  function hitTest(card, mouseX, mouseY) {
+    const centreX = card.x + CW / 2;
+    const centreY = card.y + CH / 2;
+
+    const reverseRotation =
+      -card.rot * Math.PI / 180;
+
+    const dx = mouseX - centreX;
+    const dy = mouseY - centreY;
+
+    const localX =
+      dx * Math.cos(reverseRotation) -
+      dy * Math.sin(reverseRotation) +
+      CW / 2;
+
+    const localY =
+      dx * Math.sin(reverseRotation) +
+      dy * Math.cos(reverseRotation) +
+      CH / 2;
+
+    const padding = 10;
+
+    return (
+      localX >= -padding &&
+      localX <= CW + padding &&
+      localY >= -padding &&
+      localY <= CH + padding
+    );
   }
 
-  // overlay
-  const overlay  = document.getElementById('card-overlay');
-  const ovCanvas = document.getElementById('overlay-canvas');
-  const ovNum    = document.getElementById('overlay-num');
-  const ovTitle  = document.getElementById('overlay-title');
-  const ovCat    = document.getElementById('overlay-cat');
-  const ovLink   = document.getElementById('overlay-link');
-  const ovClose  = document.getElementById('overlay-close');
+  // ── Selected-card overlay ────────────────────────────────────────────────
+  const overlay =
+    document.getElementById('card-overlay');
+
+  const overlayCanvas =
+    document.getElementById('overlay-canvas');
+
+  const overlayNum =
+    document.getElementById('overlay-num');
+
+  const overlayTitle =
+    document.getElementById('overlay-title');
+
+  const overlayCat =
+    document.getElementById('overlay-cat');
+
+  const overlayLink =
+    document.getElementById('overlay-link');
+
+  const overlayClose =
+    document.getElementById('overlay-close');
+
   let selectedCard = null;
 
-  function showOverlay(c) {
-    selectedCard=c; c.selected=true; c.targetReveal=1;
-    const sc=Math.min(2.2,(W*0.35)/CW,(H*0.6)/CH);
-    const ow=Math.round(CW*sc), oh=Math.round(CH*sc);
-    ovCanvas.width=ow; ovCanvas.height=oh;
-    ovCanvas.style.width=ow+'px'; ovCanvas.style.height=oh+'px';
-    const ovCtx=ovCanvas.getContext('2d');
-    ovCtx.clearRect(0,0,ow,oh);
-    drawCard({...c,rot:0,revealAmt:1,hovered:false,selected:true},ovCtx,0,0,sc,1);
-    ovNum.textContent=c.p.num; ovTitle.textContent=c.p.title;
-    ovCat.textContent=c.p.cat; ovLink.href=c.p.href;
+  function showOverlay(card) {
+    selectedCard = card;
+
+    card.selected = true;
+    card.targetReveal = 1;
+
+    const scale = Math.min(
+      2.2,
+      (W * 0.35) / CW,
+      (H * 0.6) / CH
+    );
+
+    const overlayWidth =
+      Math.round(CW * scale);
+
+    const overlayHeight =
+      Math.round(CH * scale);
+
+    overlayCanvas.width = overlayWidth;
+    overlayCanvas.height = overlayHeight;
+
+    overlayCanvas.style.width =
+      overlayWidth + 'px';
+
+    overlayCanvas.style.height =
+      overlayHeight + 'px';
+
+    const overlayContext =
+      overlayCanvas.getContext('2d');
+
+    overlayContext.clearRect(
+      0,
+      0,
+      overlayWidth,
+      overlayHeight
+    );
+
+    drawCard(
+      {
+        ...card,
+        rot: 0,
+        revealAmt: 1,
+        hovered: false,
+        selected: true
+      },
+      overlayContext,
+      0,
+      0,
+      scale,
+      1
+    );
+
+    overlayNum.textContent =
+      card.p.num;
+
+    overlayTitle.textContent =
+      card.p.title;
+
+    overlayCat.textContent =
+      card.p.cat;
+
+    overlayLink.href =
+      card.p.href;
+
     overlay.classList.add('visible');
   }
 
   function hideOverlay() {
     overlay.classList.remove('visible');
+
     if (selectedCard) {
-      selectedCard.selected=false; selectedCard.targetReveal=0;
-      selectedCard.vx=(Math.random()-0.5)*2;
-      selectedCard.vy=(Math.random()-0.5)*2;
-      selectedCard.vr=(Math.random()-0.5)*0.4;
-      selectedCard=null;
+      selectedCard.selected = false;
+      selectedCard.targetReveal = 0;
+      selectedCard.vx = 0;
+      selectedCard.vy = 0;
+      selectedCard = null;
     }
   }
 
-  ovClose.addEventListener('click', hideOverlay);
-  overlay.addEventListener('click', e=>{ if(e.target===overlay) hideOverlay(); });
+  overlayClose.addEventListener(
+    'click',
+    hideOverlay
+  );
 
-  // ── SHOW ALL / GRID VIEW ──────────────────────────────────────────────────
-  const gridView      = document.getElementById('grid-view');
-  const gridInner     = document.getElementById('grid-view-inner');
-  const showAllBtn    = document.getElementById('show-all-btn');
-  const gridCloseBtn  = document.getElementById('grid-close-btn');
+  overlay.addEventListener('click', event => {
+    if (event.target === overlay) {
+      hideOverlay();
+    }
+  });
+
+  // ── Grid view: unchanged ─────────────────────────────────────────────────
+  const gridView =
+    document.getElementById('grid-view');
+
+  const gridInner =
+    document.getElementById('grid-view-inner');
+
+  const showAllBtn =
+    document.getElementById('show-all-btn');
+
+  const gridCloseBtn =
+    document.getElementById('grid-close-btn');
+
   let gridBuilt = false;
 
   function buildGridView() {
     if (gridBuilt) return;
-    gridBuilt = true;
-    PROJECTS.forEach(p => {
-      const cell = document.createElement('div');
-      cell.className = 'grid-cell';
-      const bg = document.createElement('div');
-      bg.className = 'grid-cell-img';
-      if (p.imgSrc) bg.style.backgroundImage = `url('${p.imgSrc}')`;
-      else bg.style.background = `rgb(${p.color[0]*.4|0},${p.color[1]*.4|0},${p.color[2]*.4|0})`;
-      const info = document.createElement('div');
-      info.className = 'grid-cell-info';
-      info.innerHTML = `<span class="grid-cell-num">${p.num}</span><span class="grid-cell-title">${p.title}</span><span class="grid-cell-cat">${p.cat}</span>`;
-      cell.appendChild(bg);
-      cell.appendChild(info);
-      cell.addEventListener('click', ()=>{ window.location.href=p.href; });
-      let touchStartY = 0;
-      cell.addEventListener('touchstart', e=>{ touchStartY = e.touches[0].clientY; }, {passive:true});
 
-      cell.addEventListener('touchend', e=>{
-       const moved = Math.abs(e.changedTouches[0].clientY - touchStartY);
-      if (moved > 8) return; // was scrolling, not tapping
-      e.preventDefault();
-      window.location.href = p.href;
-      }, {passive:false});
+    gridBuilt = true;
+
+    PROJECTS.forEach(project => {
+      const cell =
+        document.createElement('div');
+
+      cell.className = 'grid-cell';
+
+      const image =
+        document.createElement('div');
+
+      image.className = 'grid-cell-img';
+
+      if (project.imgSrc) {
+        image.style.backgroundImage =
+          `url('${project.imgSrc}')`;
+      } else {
+        image.style.background =
+          `rgb(` +
+          `${project.color[0] * 0.4 | 0},` +
+          `${project.color[1] * 0.4 | 0},` +
+          `${project.color[2] * 0.4 | 0})`;
+      }
+
+      const info =
+        document.createElement('div');
+
+      info.className = 'grid-cell-info';
+
+      info.innerHTML =
+        `<span class="grid-cell-num">${project.num}</span>` +
+        `<span class="grid-cell-title">${project.title}</span>` +
+        `<span class="grid-cell-cat">${project.cat}</span>`;
+
+      cell.appendChild(image);
+      cell.appendChild(info);
+
+      cell.addEventListener('click', () => {
+        window.location.href = project.href;
+      });
+
+      let touchStartY = 0;
+
+      cell.addEventListener(
+        'touchstart',
+        event => {
+          touchStartY =
+            event.touches[0].clientY;
+        },
+        {
+          passive: true
+        }
+      );
+
+      cell.addEventListener(
+        'touchend',
+        event => {
+          const moved = Math.abs(
+            event.changedTouches[0].clientY -
+            touchStartY
+          );
+
+          if (moved > 8) return;
+
+          event.preventDefault();
+
+          window.location.href =
+            project.href;
+        },
+        {
+          passive: false
+        }
+      );
+
       gridInner.appendChild(cell);
     });
   }
 
   function showGridView() {
     buildGridView();
+
     gridView.classList.add('visible');
     showAllBtn.classList.add('active');
-    showAllBtn.textContent = 'HIDE GRID';
+
+    showAllBtn.textContent =
+      'HIDE GRID';
   }
 
   function hideGridView() {
     gridView.classList.remove('visible');
     showAllBtn.classList.remove('active');
-    showAllBtn.textContent = 'SHOW GRID';
+
+    showAllBtn.textContent =
+      'SHOW GRID';
   }
 
-  showAllBtn.addEventListener('click', ()=>{
-    if (gridView.classList.contains('visible')) hideGridView();
-    else showGridView();
+  showAllBtn.addEventListener('click', () => {
+    if (
+      gridView.classList.contains('visible')
+    ) {
+      hideGridView();
+    } else {
+      showGridView();
+    }
   });
-  gridCloseBtn.addEventListener('click', hideGridView);
-  gridView.addEventListener('click', e=>{ if(e.target===gridView) hideGridView(); });
 
-  // ── Mouse ─────────────────────────────────────────────────────────────────
-  let mX=W/2, mY=H/2, mActive=false;
-  let dragCard=null, dragOffX=0, dragOffY=0, dragStartX=0, dragStartY=0;
+  gridCloseBtn.addEventListener(
+    'click',
+    hideGridView
+  );
 
-  canvas.addEventListener('mousedown', e=>{
-    if (overlay.classList.contains('visible')||gridView.classList.contains('visible')) return;
-    dragStartX=e.clientX; dragStartY=e.clientY;
-    for (let i=cards.length-1;i>=0;i--) {
-      const c=cards[i];
-      if (hitTest(c,e.clientX,e.clientY)) {
-        dragCard=c; dragOffX=e.clientX-c.x; dragOffY=e.clientY-c.y;
-        c.hovered=true; c.targetReveal=1; c.vx=0; c.vy=0; c.vr=0; break;
+  gridView.addEventListener('click', event => {
+    if (event.target === gridView) {
+      hideGridView();
+    }
+  });
+
+  // ── Mouse interaction ────────────────────────────────────────────────────
+  let mouseX = W / 2;
+  let mouseY = H / 2;
+  let mouseActive = false;
+
+  let dragCard = null;
+  let dragOffsetX = 0;
+  let dragOffsetY = 0;
+  let dragStartX = 0;
+  let dragStartY = 0;
+
+  canvas.addEventListener(
+    'mousedown',
+    event => {
+      if (
+        overlay.classList.contains('visible') ||
+        gridView.classList.contains('visible')
+      ) {
+        return;
+      }
+
+      dragStartX = event.clientX;
+      dragStartY = event.clientY;
+
+      /*
+       * Prefer the card already identified as hovered.
+       * Otherwise search from the top of the stack downward.
+       */
+      const currentlyHovered =
+        cards.find(card =>
+          card.hovered &&
+          hitTest(
+            card,
+            event.clientX,
+            event.clientY
+          )
+        );
+
+      const candidates =
+        currentlyHovered
+          ? [currentlyHovered]
+          : [...cards].reverse();
+
+      for (const card of candidates) {
+        if (
+          hitTest(
+            card,
+            event.clientX,
+            event.clientY
+          )
+        ) {
+          dragCard = card;
+
+          dragOffsetX =
+            event.clientX - card.x;
+
+          dragOffsetY =
+            event.clientY - card.y;
+
+          card.hovered = true;
+          card.targetReveal = 1;
+          card.vx = 0;
+          card.vy = 0;
+
+          break;
+        }
       }
     }
-  });
+  );
 
-  canvas.addEventListener('mousemove', e=>{
-    mX=e.clientX; mY=e.clientY; mActive=true;
-    curEl.style.left=mX+'px'; curEl.style.top=mY+'px';
-    ring.style.left=mX+'px';  ring.style.top=mY+'px';
-    if (dragCard) {
-      dragCard.x=e.clientX-dragOffX; dragCard.y=e.clientY-dragOffY;
-      dragCard.vx=0; dragCard.vy=0; return;
-    }
-    let anyH=false;
-    cards.forEach(c=>{
-      if(c.selected) return;
-      c.hovered=hitTest(c,mX,mY); c.targetReveal=c.hovered?1:0;
-      if(c.hovered) anyH=true;
-    });
-    ring.classList.toggle('hovered',anyH);
-  });
+  canvas.addEventListener(
+    'mousemove',
+    event => {
+      mouseX = event.clientX;
+      mouseY = event.clientY;
+      mouseActive = true;
 
-  canvas.addEventListener('mouseup', e=>{
-    if (!dragCard) return;
-    const moved=Math.abs(e.clientX-dragStartX)+Math.abs(e.clientY-dragStartY);
-    if (moved<6 && !overlay.classList.contains('visible')) {
-      showOverlay(dragCard);
-    } else {
-      dragCard.vx=(e.clientX-dragStartX)*0.08;
-      dragCard.vy=(e.clientY-dragStartY)*0.08;
-      dragCard.hovered=false; dragCard.targetReveal=0;
-    }
-    dragCard=null;
-  });
+      curEl.style.left =
+        mouseX + 'px';
 
-  canvas.addEventListener('mouseleave', ()=>{
-    mActive=false;
-    if (dragCard) { dragCard.vx=0; dragCard.vy=0; dragCard.hovered=false; dragCard.targetReveal=0; dragCard=null; }
-    cards.forEach(c=>{ if(!c.selected){c.hovered=false;c.targetReveal=0;} });
-    ring.classList.remove('hovered');
-  });
+      curEl.style.top =
+        mouseY + 'px';
 
-  // ── Touch ─────────────────────────────────────────────────────────────────
-  let touchDragCard=null, touchDragOffX=0, touchDragOffY=0;
-  let touchStartX=0, touchStartY=0, touchMoved=false;
+      ring.style.left =
+        mouseX + 'px';
 
-  canvas.addEventListener('touchstart', e=>{
-    e.preventDefault();
-    if (overlay.classList.contains('visible')||gridView.classList.contains('visible')) return;
-    const rc=canvas.getBoundingClientRect();
-    const tx=e.touches[0].clientX-rc.left, ty=e.touches[0].clientY-rc.top;
-    touchStartX=tx; touchStartY=ty; touchMoved=false;
-    for (let i=cards.length-1;i>=0;i--) {
-      const c=cards[i];
-      if (hitTest(c,tx,ty)) {
-        touchDragCard=c; touchDragOffX=tx-c.x; touchDragOffY=ty-c.y;
-        c.hovered=true; c.targetReveal=1; c.vx=0; c.vy=0; c.vr=0; break;
+      ring.style.top =
+        mouseY + 'px';
+
+      if (dragCard) {
+        dragCard.x =
+          event.clientX - dragOffsetX;
+
+        dragCard.y =
+          event.clientY - dragOffsetY;
+
+        dragCard.vx = 0;
+        dragCard.vy = 0;
+
+        return;
       }
-    }
-  },{passive:false});
 
-  canvas.addEventListener('touchmove', e=>{
-    e.preventDefault();
-    if (!touchDragCard) return;
-    const rc=canvas.getBoundingClientRect();
-    const tx=e.touches[0].clientX-rc.left, ty=e.touches[0].clientY-rc.top;
-    if (Math.abs(tx-touchStartX)+Math.abs(ty-touchStartY)>6) touchMoved=true;
-    touchDragCard.x=tx-touchDragOffX; touchDragCard.y=ty-touchDragOffY;
-    touchDragCard.vx=0; touchDragCard.vy=0;
-  },{passive:false});
+      /*
+       * Only one card is considered hovered.
+       * Other cards still move away from the pointer.
+       */
+      let hoveredCard =
+        cards.find(card =>
+          card.hovered &&
+          !card.selected &&
+          hitTest(
+            card,
+            mouseX,
+            mouseY
+          )
+        ) || null;
 
-  canvas.addEventListener('touchend', e=>{
-    e.preventDefault();
-    if (!touchDragCard) return;
-    if (!touchMoved) {
-      showOverlay(touchDragCard);
-    } else {
-      const rc=canvas.getBoundingClientRect();
-      const tx=e.changedTouches[0].clientX-rc.left, ty=e.changedTouches[0].clientY-rc.top;
-      touchDragCard.vx=(tx-touchStartX)*0.09; touchDragCard.vy=(ty-touchStartY)*0.09;
-      touchDragCard.hovered=false; touchDragCard.targetReveal=0;
-    }
-    touchDragCard=null;
-  },{passive:false});
+      if (!hoveredCard) {
+        for (
+          let index = cards.length - 1;
+          index >= 0;
+          index--
+        ) {
+          const card = cards[index];
 
-  // ── Physics loop ───────────────────────────────────────────────────────────
-  let t=0;
-  (function loop() {
-    requestAnimationFrame(loop);
-    t+=0.007;
-    ctx.fillStyle='rgba(10,6,8,0.3)';
-    ctx.fillRect(0,0,W,H);
-
-    cards.forEach((c,i)=>{
-      c.revealAmt+=(c.targetReveal-c.revealAmt)*0.07;
-
-      if (c===dragCard||c===touchDragCard) {
-        // dragging — no physics
-      } else if (!c.hovered&&!c.selected) {
-        if (mActive) {
-          const cx=c.x+CW/2, cy=c.y+CH/2;
-          const dx=mX-cx, dy=mY-cy;
-          const dist=Math.sqrt(dx*dx+dy*dy);
-          if (dist<185&&dist>1) {
-            const f=((185-dist)/185)*4.8;
-            c.vx-=(dx/dist)*f; c.vy-=(dy/dist)*f;
-            c.vr+=(Math.random()-0.5)*0.45;
+          if (
+            !card.selected &&
+            hitTest(
+              card,
+              mouseX,
+              mouseY
+            )
+          ) {
+            hoveredCard = card;
+            break;
           }
         }
-        c.vx+=Math.cos(t*0.8+i*1.1)*0.045;
-        c.vy+=Math.sin(t*1.2+i*0.75)*0.045;
-        const pad=35;
-        if (c.x<-pad||c.x>W-CW+pad) c.vx*=-0.45;
-        if (c.y<-pad||c.y>PLAYFIELD_H-CH+pad) c.vy*=-0.45;
-        c.x=Math.max(-pad,Math.min(W-CW+pad,c.x+c.vx));
-        c.y=Math.max(-pad,Math.min(PLAYFIELD_H-CH+pad,c.y+c.vy));
-        c.vx*=0.975; c.vy*=0.975; c.vr*=0.92;
-        c.rot+=c.vr; c.rot=Math.max(-45,Math.min(45,c.rot));
-      } else if (c.hovered) {
-        c.vx*=0.45; c.vy*=0.45; c.vr*=0.45;
-        c.rot+=(0-c.rot)*0.18;
       }
-      drawCard(c);
-    });
-  })();
 
-  window.addEventListener('resize',()=>{ W=window.innerWidth; H=window.innerHeight; canvas.width=W; canvas.height=H; });
+      cards.forEach(card => {
+        if (card.selected) return;
+
+        card.hovered =
+          card === hoveredCard;
+
+        card.targetReveal =
+          card.hovered ? 1 : 0;
+      });
+
+      ring.classList.toggle(
+        'hovered',
+        Boolean(hoveredCard)
+      );
+    }
+  );
+
+  canvas.addEventListener(
+    'mouseup',
+    event => {
+      if (!dragCard) return;
+
+      const moved =
+        Math.abs(
+          event.clientX - dragStartX
+        ) +
+        Math.abs(
+          event.clientY - dragStartY
+        );
+
+      if (
+        moved < 6 &&
+        !overlay.classList.contains('visible')
+      ) {
+        showOverlay(dragCard);
+      } else {
+        /*
+         * Do not throw the card.
+         * It will smoothly return to its anchor.
+         */
+        dragCard.vx = 0;
+        dragCard.vy = 0;
+        dragCard.hovered = false;
+        dragCard.targetReveal = 0;
+      }
+
+      dragCard = null;
+    }
+  );
+
+  canvas.addEventListener(
+    'mouseleave',
+    () => {
+      mouseActive = false;
+
+      if (dragCard) {
+        dragCard.vx = 0;
+        dragCard.vy = 0;
+        dragCard.hovered = false;
+        dragCard.targetReveal = 0;
+        dragCard = null;
+      }
+
+      cards.forEach(card => {
+        if (!card.selected) {
+          card.hovered = false;
+          card.targetReveal = 0;
+        }
+      });
+
+      ring.classList.remove('hovered');
+    }
+  );
+
+  // ── Touch interaction ────────────────────────────────────────────────────
+  let touchDragCard = null;
+  let touchDragOffsetX = 0;
+  let touchDragOffsetY = 0;
+
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchMoved = false;
+
+  canvas.addEventListener(
+    'touchstart',
+    event => {
+      event.preventDefault();
+
+      if (
+        overlay.classList.contains('visible') ||
+        gridView.classList.contains('visible')
+      ) {
+        return;
+      }
+
+      const bounds =
+        canvas.getBoundingClientRect();
+
+      const touchX =
+        event.touches[0].clientX -
+        bounds.left;
+
+      const touchY =
+        event.touches[0].clientY -
+        bounds.top;
+
+      touchStartX = touchX;
+      touchStartY = touchY;
+      touchMoved = false;
+
+      for (
+        let index = cards.length - 1;
+        index >= 0;
+        index--
+      ) {
+        const card = cards[index];
+
+        if (
+          hitTest(
+            card,
+            touchX,
+            touchY
+          )
+        ) {
+          touchDragCard = card;
+
+          touchDragOffsetX =
+            touchX - card.x;
+
+          touchDragOffsetY =
+            touchY - card.y;
+
+          card.hovered = true;
+          card.targetReveal = 1;
+          card.vx = 0;
+          card.vy = 0;
+
+          break;
+        }
+      }
+    },
+    {
+      passive: false
+    }
+  );
+
+  canvas.addEventListener(
+    'touchmove',
+    event => {
+      event.preventDefault();
+
+      if (!touchDragCard) return;
+
+      const bounds =
+        canvas.getBoundingClientRect();
+
+      const touchX =
+        event.touches[0].clientX -
+        bounds.left;
+
+      const touchY =
+        event.touches[0].clientY -
+        bounds.top;
+
+      if (
+        Math.abs(touchX - touchStartX) +
+          Math.abs(touchY - touchStartY) >
+        6
+      ) {
+        touchMoved = true;
+      }
+
+      touchDragCard.x =
+        touchX - touchDragOffsetX;
+
+      touchDragCard.y =
+        touchY - touchDragOffsetY;
+
+      touchDragCard.vx = 0;
+      touchDragCard.vy = 0;
+    },
+    {
+      passive: false
+    }
+  );
+
+  canvas.addEventListener(
+    'touchend',
+    event => {
+      event.preventDefault();
+
+      if (!touchDragCard) return;
+
+      if (!touchMoved) {
+        showOverlay(touchDragCard);
+      } else {
+        /*
+         * Return the card to its original position.
+         */
+        touchDragCard.vx = 0;
+        touchDragCard.vy = 0;
+        touchDragCard.hovered = false;
+        touchDragCard.targetReveal = 0;
+      }
+
+      touchDragCard = null;
+    },
+    {
+      passive: false
+    }
+  );
+
+  // ── Proximity movement settings ──────────────────────────────────────────
+
+  /*
+   * Larger value:
+   * cards start moving while the cursor is farther away.
+   */
+  const REPEL_RADIUS = Math.max(
+    210,
+    CW * 1.45
+  );
+
+  /*
+   * Larger value:
+   * cards move farther away from the cursor.
+   */
+  const REPEL_DISTANCE = Math.min(
+    150,
+    CW * 0.82
+  );
+
+  /*
+   * Larger value:
+   * cards move and return more quickly.
+   */
+  const SPRING = 0.075;
+
+  /*
+   * Lower value:
+   * movement stops more quickly.
+   *
+   * Higher value:
+   * movement feels softer and more elastic.
+   */
+  const DAMPING = 0.76;
+
+  function getProximityTarget(card, index) {
+    let targetX = card.anchorX;
+    let targetY = card.anchorY;
+    let targetRotation = card.baseRot;
+
+    if (
+      mouseActive &&
+      !card.hovered &&
+      !card.selected &&
+      !overlay.classList.contains('visible') &&
+      !gridView.classList.contains('visible')
+    ) {
+      /*
+       * Calculate distance from the cursor to the card's
+       * original anchor position, not its moving position.
+       *
+       * This makes the movement stable and prevents drifting.
+       */
+      const cardCentreX =
+        card.anchorX + CW / 2;
+
+      const cardCentreY =
+        card.anchorY + CH / 2;
+
+      let dx =
+        cardCentreX - mouseX;
+
+      let dy =
+        cardCentreY - mouseY;
+
+      let distance =
+        Math.sqrt(
+          dx * dx +
+          dy * dy
+        );
+
+      if (distance < REPEL_RADIUS) {
+        if (distance < 0.001) {
+          const angle =
+            index /
+            cards.length *
+            Math.PI *
+            2;
+
+          dx = Math.cos(angle);
+          dy = Math.sin(angle);
+          distance = 1;
+        }
+
+        /*
+         * Smooth proximity curve:
+         * 1 close to the cursor and 0 at the outer radius.
+         */
+        const normalized =
+          1 -
+          distance /
+          REPEL_RADIUS;
+
+        const influence =
+          normalized *
+          normalized *
+          (3 - 2 * normalized);
+
+        const directionX =
+          dx / distance;
+
+        const directionY =
+          dy / distance;
+
+        targetX +=
+          directionX *
+          REPEL_DISTANCE *
+          influence;
+
+        targetY +=
+          directionY *
+          REPEL_DISTANCE *
+          influence;
+
+        targetRotation +=
+          directionX *
+          3.2 *
+          influence +
+          (index % 2 ? 1 : -1) *
+          influence;
+      }
+    }
+
+    /*
+     * Straighten the card directly beneath the cursor.
+     * Surrounding cards separate from it.
+     */
+    if (card.hovered) {
+      targetRotation = 0;
+    }
+
+    /*
+     * Keep cards mostly inside the visible area.
+     */
+    const edgeAllowance =
+      CW * 0.12;
+
+    const lowerReserve =
+      Math.max(
+        138,
+        NAV_H + 94
+      );
+
+    targetX = Math.max(
+      -edgeAllowance,
+      Math.min(
+        W - CW + edgeAllowance,
+        targetX
+      )
+    );
+
+    targetY = Math.max(
+      104,
+      Math.min(
+        H - lowerReserve - CH,
+        targetY
+      )
+    );
+
+    return {
+      x: targetX,
+      y: targetY,
+      rot: targetRotation
+    };
+  }
+
+  // ── Animation loop ───────────────────────────────────────────────────────
+  function animationLoop() {
+    requestAnimationFrame(animationLoop);
+
+    /*
+     * Clear the previous frame completely.
+     * This prevents visual trails from appearing.
+     */
+    ctx.clearRect(
+      0,
+      0,
+      W,
+      H
+    );
+
+    cards.forEach((card, index) => {
+      card.revealAmt +=
+        (
+          card.targetReveal -
+          card.revealAmt
+        ) *
+        0.07;
+
+      if (
+        card === dragCard ||
+        card === touchDragCard
+      ) {
+        return;
+      }
+
+      const target =
+        getProximityTarget(
+          card,
+          index
+        );
+
+      /*
+       * Spring movement toward either:
+       * - the card's original anchor position, or
+       * - its temporary cursor-repel position.
+       */
+      card.vx +=
+        (
+          target.x -
+          card.x
+        ) *
+        SPRING;
+
+      card.vy +=
+        (
+          target.y -
+          card.y
+        ) *
+        SPRING;
+
+      card.vx *= DAMPING;
+      card.vy *= DAMPING;
+
+      card.x += card.vx;
+      card.y += card.vy;
+
+      card.rot +=
+        (
+          target.rot -
+          card.rot
+        ) *
+        0.1;
+    });
+
+    /*
+     * Draw the active card last so it stays above
+     * the surrounding overlapping cards.
+     */
+    const activeCard =
+      dragCard ||
+      touchDragCard ||
+      cards.find(card => card.hovered) ||
+      selectedCard;
+
+    cards.forEach(card => {
+      if (card !== activeCard) {
+        drawCard(card);
+      }
+    });
+
+    if (activeCard) {
+      drawCard(activeCard);
+    }
+  }
+
+  animationLoop();
+
+  // ── Window resize ────────────────────────────────────────────────────────
+  window.addEventListener(
+    'resize',
+    () => {
+      W = window.innerWidth;
+      H = window.innerHeight;
+
+      canvas.width = W;
+      canvas.height = H;
+
+      layoutCards(false);
+    }
+  );
 }
 
 function initMenu() {
-  const md  = document.getElementById('menu-dropdown');
-  const mdm = document.getElementById('menu-dropdown-mobile');
-  const bm  = document.getElementById('btn-menu');
-  const bmm = document.getElementById('btn-menu-mobile');
+  const menuDropdown =
+    document.getElementById(
+      'menu-dropdown'
+    );
 
-  const close=()=>{
-    md.classList.remove('open'); bm.classList.remove('active');
-    mdm.classList.remove('open'); if(bmm)bmm.classList.remove('active');
-  };
-  bm.addEventListener('click',e=>{ e.stopPropagation(); bm.classList.toggle('active',md.classList.toggle('open')); });
-  if (bmm) bmm.addEventListener('click',e=>{ e.stopPropagation(); bmm.classList.toggle('active',mdm.classList.toggle('open')); });
-  document.addEventListener('click',e=>{ if(!e.target.closest('#menu-wrapper')&&!e.target.closest('#btn-menu-mobile')&&!e.target.closest('#menu-dropdown-mobile')) close(); });
+  const mobileMenuDropdown =
+    document.getElementById(
+      'menu-dropdown-mobile'
+    );
+
+  const menuButton =
+    document.getElementById(
+      'btn-menu'
+    );
+
+  const mobileMenuButton =
+    document.getElementById(
+      'btn-menu-mobile'
+    );
+
+  function closeMenus() {
+    menuDropdown.classList.remove('open');
+    menuButton.classList.remove('active');
+
+    mobileMenuDropdown.classList.remove('open');
+
+    if (mobileMenuButton) {
+      mobileMenuButton.classList.remove(
+        'active'
+      );
+    }
+  }
+
+  menuButton.addEventListener(
+    'click',
+    event => {
+      event.stopPropagation();
+
+      const isOpen =
+        menuDropdown.classList.toggle(
+          'open'
+        );
+
+      menuButton.classList.toggle(
+        'active',
+        isOpen
+      );
+    }
+  );
+
+  if (mobileMenuButton) {
+    mobileMenuButton.addEventListener(
+      'click',
+      event => {
+        event.stopPropagation();
+
+        const isOpen =
+          mobileMenuDropdown.classList.toggle(
+            'open'
+          );
+
+        mobileMenuButton.classList.toggle(
+          'active',
+          isOpen
+        );
+      }
+    );
+  }
+
+  document.addEventListener(
+    'click',
+    event => {
+      const clickedDesktopMenu =
+        event.target.closest(
+          '#menu-wrapper'
+        );
+
+      const clickedMobileButton =
+        event.target.closest(
+          '#btn-menu-mobile'
+        );
+
+      const clickedMobileDropdown =
+        event.target.closest(
+          '#menu-dropdown-mobile'
+        );
+
+      if (
+        !clickedDesktopMenu &&
+        !clickedMobileButton &&
+        !clickedMobileDropdown
+      ) {
+        closeMenus();
+      }
+    }
+  );
 }
