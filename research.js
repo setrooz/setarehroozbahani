@@ -139,7 +139,7 @@ function drawEdges(hovered) {
   for (let y = MIN_YEAR; y <= MAX_YEAR; y++) {
     const x = PAD_L + ((y - MIN_YEAR) / (MAX_YEAR - MIN_YEAR)) * (W - PAD_L - PAD_R);
     ctx.beginPath(); ctx.moveTo(x, PAD_T); ctx.lineTo(x, H - PAD_B);
-    ctx.strokeStyle = 'rgba(89,44,56,0.60)'; ctx.stroke();
+    ctx.strokeStyle = 'rgba(141, 106, 115, 0.8)'; ctx.stroke();
   }
   ctx.setLineDash([]);
 
