@@ -42,7 +42,7 @@ const PROJECTS = [
     href: 'project-5.html',
 
     // Project 05: JPG background + MP4 overlay
-    imgSrc: 'images/project5.JPG',
+    imgSrc: 'videos/project5.mp4',
     overlayVideoSrc: 'videos/project5.mp4',
 
     // Video opacity while resting and while hovered
