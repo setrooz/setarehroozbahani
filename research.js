@@ -136,22 +136,37 @@ const RESEARCH = [
   },
   {
     num: '11',
-    title: 'Visual Essay Submission',
+    title: '(Visual) Essays',
+    imgSrc: 'images/explore/11-01.jpeg',
     tag: 'Representation',
     year: 2026,
-    method: 0.44,
+    method: 0.58,
     href: 'research-11.html',
     color: [60, 30, 48],
     abstract:
-      'Open call entry for abstracts.'
+      'Open call entries for abstracts.',
+      gallery: [
+      {
+        type: 'image',
+        src: 'images/explore/11-01.jpeg',
+        poster: 'images/explore/11-01.jpeg',
+        caption: 'Essays'
+      },
+      {
+        type: 'image',
+        src: 'images/explore/11-02.jpeg',
+        alt: 'Still image from the Arduino projects study',
+        caption: 'Essays'
+      }
+    ]
   },
   {
     num: '12',
-    title: 'Arduino Projects Workshop and Research',
+    title: 'ARCH/TECH',
     imgSrc: 'images/explore/12-01.jpeg',
     tag: 'Multidisciplinary',
     year: 2026,
-    method: 0.32,
+    method: 0.46,
     href: 'research-12.html',
     color: [30, 40, 70],
     abstract:
