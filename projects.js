@@ -46,7 +46,7 @@ const PROJECTS = [
     overlayVideoSrc: 'videos/project5.mp4',
 
     // Video opacity while resting and while hovered
-    overlayOpacity: 0.50,
+    overlayOpacity: 0.55,
     overlayHoverOpacity: 0.50,
 
     // Change to 'screen' if the MP4 has a black background
@@ -1089,7 +1089,7 @@ function initProjectsSphere() {
 
       const hoverOverlayOpacity =
         project.overlayHoverOpacity ??
-        0.30;
+        0.45;
 
       const overlayAlpha =
         normalOverlayOpacity +
