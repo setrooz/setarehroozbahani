@@ -3,7 +3,7 @@ const PROJECTS = [
     num: '01',
     title: 'The Spheres of Influence',
     cat: 'Master Studio · 2022',
-    href: 'project-1.html',
+    href: 'comingsoon.html',
     imgSrc: 'images/Spheres of Influence_00.jpg',
     overlaySrc: 'images/Spheres of Influence_00.jpg',
     color: [89, 44, 56]
@@ -12,7 +12,7 @@ const PROJECTS = [
     num: '02',
     title: 'Learning from Lungomare G.M',
     cat: 'Master Thesis · 2022–2023',
-    href: 'project-2.html',
+    href: 'comingsoon.html',
     imgSrc: 'images/LLGM.png',
     overlaySrc: 'images/LLGM.png',
     color: [42, 30, 60]
@@ -21,7 +21,7 @@ const PROJECTS = [
     num: '03',
     title: 'Prof. CO',
     cat: 'Architectural Practice · 2023–2026',
-    href: 'project-3.html',
+    href: 'comingsoon.html',
     imgSrc: 'images/CAS01.png',
     overlaySrc: 'images/CAS01overlay.png',
     color: [26, 46, 60]
@@ -30,7 +30,7 @@ const PROJECTS = [
     num: '04',
     title: 'Prof. ZP',
     cat: 'Architectural Practice · 2023–2026',
-    href: 'project-4.html',
+    href: 'comingsoon.html',
     imgSrc: 'images/cieo02.png',
     overlaySrc: 'images/cieo02overlay.png',
     color: [26, 60, 40]
@@ -39,7 +39,7 @@ const PROJECTS = [
     num: '05',
     title: 'Prof. KT',
     cat: 'Architectural Practice · 2023–2026',
-    href: 'project-5.html',
+    href: 'comingsoon.html',
 
     // Project 05: JPG background + MP4 overlay
     imgSrc: 'videos/project5.mp4',
@@ -58,7 +58,7 @@ const PROJECTS = [
     num: '06',
     title: 'Prof. SJ',
     cat: 'Architectural Practice · 2023–2026',
-    href: 'project-6.html',
+    href: 'comingsoon.html',
     imgSrc: 'images/SJ.png',
     overlaySrc: 'images/SJoverlay.png',
     color: [60, 26, 14]
@@ -67,7 +67,7 @@ const PROJECTS = [
     num: '07',
     title: 'Prof. DE',
     cat: 'Architectural Practice · 2023–2026',
-    href: 'project-7.html',
+    href: 'comingsoon.html',
     imgSrc: 'images/detoverlay02.png',
     overlaySrc: 'images/detoverlay02.png',
     color: [60, 26, 14]
@@ -76,7 +76,7 @@ const PROJECTS = [
     num: '08',
     title: 'Prof. LV',
     cat: 'Architectural Traineeship · 2023',
-    href: 'project-8.html',
+    href: 'comingsoon.html',
     imgSrc: 'images/PVH01.jpg',
     overlaySrc: 'images/PVH01overlay.png',
     color: [30, 40, 70]
@@ -85,7 +85,7 @@ const PROJECTS = [
     num: '09',
     title: 'Prof. BT',
     cat: 'Architectural Photography · 2023',
-    href: 'project-9.html',
+    href: 'comingsoon.html',
     imgSrc: 'images/BT.png',
     overlaySrc: 'images/BToverlay02.png',
     color: [30, 40, 70]
@@ -94,7 +94,7 @@ const PROJECTS = [
     num: '10',
     title: 'Extended Liminal',
     cat: 'Summer School · 2022',
-    href: 'project-10.html',
+    href: 'comingsoon.html',
     imgSrc: 'images/Extended Liminal_00.jpg',
     overlaySrc: 'images/Extended Liminaloverlay.png',
     color: [60, 30, 48]
@@ -103,7 +103,7 @@ const PROJECTS = [
     num: '11',
     title: 'Forbidden to Play',
     cat: 'Studio 1 · 2021',
-    href: 'project-11.html',
+    href: 'comingsoon.html',
     imgSrc: 'images/lep03.png',
     overlaySrc: 'images/lepoverlay02.png',
     color: [255, 255, 255]
