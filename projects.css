@@ -6,9 +6,11 @@
 }
 
 :root {
-  --bg: #0a0709;
-  --rose: 200, 120, 130;
-  --wine: 89, 44, 56;
+  --bg: #151014;
+  --panel-bg: 18, 13, 17;
+
+  --rose: 216, 138, 150;
+  --wine: 112, 58, 73;
   --white: 255, 255, 255;
 }
 
@@ -20,12 +22,26 @@ body {
 
 body {
   background:
-    radial-gradient(circle at 50% 45%, rgba(89, 44, 56, 0.13), transparent 32%),
-    radial-gradient(circle at 50% 38%, rgba(255, 255, 255, 0.025), transparent 52%),
-    #0a0709;
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(125, 66, 82, 0.24),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 50% 36%,
+      rgba(255, 255, 255, 0.065),
+      transparent 58%
+    ),
+    linear-gradient(
+      180deg,
+      #191418 0%,
+      #120e11 62%,
+      #0e0a0d 100%
+    );
+
   min-height: 100vh;
   overflow: hidden;
-  color: rgba(var(--white), 0.8);
+  color: rgba(var(--white), 0.88);
   font-family: monospace;
 }
 
