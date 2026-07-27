@@ -170,7 +170,7 @@ const RESEARCH = [
     href: 'research-12.html',
     color: [30, 40, 70],
     abstract:
-      'Ongoing research into Arduino and ESP microcontroller boards for interactive architectural, artistic, and technological applications.',
+      'Ongoing research into sensors & microcontrollers for interactive ideas.',
 
       gallery: [
       {
