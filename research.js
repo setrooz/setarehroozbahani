@@ -280,8 +280,8 @@ function drawEdges(hoveredIndex) {
     ctx.moveTo(pointA.x, pointA.y);
     ctx.lineTo(pointB.x, pointB.y);
     ctx.strokeStyle = highlighted
-      ? 'rgba(200,120,130,0.75)'
-      : 'rgba(89,44,56,0.6)';
+      ? 'rgba(200,120,130,0.85)'
+      : 'rgba(144, 96, 109, 0.82)';
     ctx.lineWidth = highlighted ? 1 : 0.5;
     ctx.setLineDash(highlighted ? [] : [3, 7]);
     ctx.stroke();
