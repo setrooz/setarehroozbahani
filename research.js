@@ -148,13 +148,29 @@ const RESEARCH = [
   {
     num: '12',
     title: 'Arduino Projects Workshop and Research',
+    imgSrc: 'images/explore/12-01.jpeg',
     tag: 'Multidisciplinary',
     year: 2026,
     method: 0.32,
     href: 'research-12.html',
     color: [30, 40, 70],
     abstract:
-      'Ongoing research into Arduino and ESP microcontroller boards for interactive architectural, artistic, and technological applications.'
+      'Ongoing research into Arduino and ESP microcontroller boards for interactive architectural, artistic, and technological applications.',
+
+      gallery: [
+      {
+        type: 'image',
+        src: 'images/explore/12-02.jpeg',
+        poster: 'images/explore/12-02.jpeg',
+        caption: 'Multidisciplinary Integration'
+      },
+      {
+        type: 'image',
+        src: 'images/explore/12-03.jpeg',
+        alt: 'Still image from the Arduino projects study',
+        caption: 'Multidisciplinary Integration'
+      }
+    ]
   }
 ];
 
