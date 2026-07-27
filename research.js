@@ -74,7 +74,7 @@ const RESEARCH = [
   {
     num: '07',
     title: 'Bestek GUI application.',
-    imgSrc: 'images/explore/07-01.PNG',
+    imgSrc: 'images/explore/07-01.jpeg',
     tag: 'Digital Documentation',
     year: 2025,
     method: 0.38,
@@ -136,14 +136,14 @@ const RESEARCH = [
   },
   {
     num: '11',
-    title: 'Clara Visual Essay Submission',
+    title: 'Visual Essay Submission',
     tag: 'Representation',
     year: 2026,
     method: 0.44,
     href: 'research-11.html',
     color: [60, 30, 48],
     abstract:
-      'Open call entry for the Clara #14 Call for Papers.'
+      'Open call entry for abstracts.'
   },
   {
     num: '12',
