@@ -5,7 +5,7 @@ const PROJECTS = [
     cat: 'Master Studio · 2022',
     href: 'project-1.html',
     imgSrc: 'images/Spheres of Influence_00.jpg',
-    overlaySrc: 'images/Spheres of Influenceoverlay.png',
+    overlaySrc: 'images/Spheres of Influence_00.jpg',
     color: [89, 44, 56]
   },
   {
@@ -13,8 +13,8 @@ const PROJECTS = [
     title: 'Learning from Lungomare G.M',
     cat: 'Master Thesis · 2022–2023',
     href: 'project-2.html',
-    imgSrc: 'images/LLGM.jpeg',
-    overlaySrc: 'images/LLGMoverlay.png',
+    imgSrc: 'images/LLGM.png',
+    overlaySrc: 'images/LLGM.png',
     color: [42, 30, 60]
   },
   {
@@ -58,8 +58,8 @@ const PROJECTS = [
     title: 'Prof. DE',
     cat: 'Architectural Practice · 2023–2026',
     href: 'project-7.html',
-    imgSrc: 'images/det.png',
-    overlaySrc: 'images/detoverlay.png',
+    imgSrc: 'images/detoverlay02.png',
+    overlaySrc: 'images/detoverlay02.png',
     color: [60, 26, 14]
   },
   {
@@ -77,7 +77,7 @@ const PROJECTS = [
     cat: 'Architectural Photography · 2023',
     href: 'project-9.html',
     imgSrc: 'images/BT.png',
-    overlaySrc: 'images/BToverlay.png',
+    overlaySrc: 'images/BToverlay02.png',
     color: [30, 40, 70]
   },
   {
