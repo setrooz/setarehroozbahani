@@ -41,7 +41,7 @@ const PROJECTS = [
     cat: 'Architectural Practice · 2023–2026',
     href: 'project-5.html',
     imgSrc: 'images/cieo03.png',
-    overlaySrc: 'images/cieo04overlay.png',
+    overlaySrc: 'images/cieo03overlay.png',
     color: [60, 26, 14]
   },
   {
@@ -471,8 +471,8 @@ function initProjectsSphere() {
 
     if (overlayImage && overlayImage.complete && overlayImage.naturalWidth) {
      drawContext.globalAlpha = Math.max(
-  0.04,
-  0.46 - revealAmount * 0.40
+  0.35,
+  0.9 - revealAmount * 0.50
 );
       drawImageCover(drawContext, overlayImage, left, top, width, height);
       drawContext.globalAlpha = 1;
