@@ -470,7 +470,10 @@ function initProjectsSphere() {
     const overlayImage = loadedOverlays[project.num];
 
     if (overlayImage && overlayImage.complete && overlayImage.naturalWidth) {
-      drawContext.globalAlpha = Math.max(0.05, 0.6 - revealAmount * 0.54);
+     drawContext.globalAlpha = Math.max(
+  0.04,
+  0.46 - revealAmount * 0.40
+);
       drawImageCover(drawContext, overlayImage, left, top, width, height);
       drawContext.globalAlpha = 1;
     }
@@ -487,8 +490,15 @@ function initProjectsSphere() {
       top + height
     );
 
-    bottomGradient.addColorStop(0, 'rgba(8,5,7,0)');
-    bottomGradient.addColorStop(1, `rgba(8,5,7,${0.78 + backAmount * 0.12})`);
+    bottomGradient.addColorStop(
+  0,
+  'rgba(12,8,11,0)'
+);
+
+bottomGradient.addColorStop(
+  1,
+  `rgba(12,8,11,${0.62 + backAmount * 0.10})`
+);
 
     drawContext.fillStyle = bottomGradient;
     drawContext.fillRect(left, top + height * 0.45, width, height * 0.55);
