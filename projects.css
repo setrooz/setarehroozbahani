@@ -51,10 +51,10 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 2;
-  opacity: 0.34;
+  opacity: 0.46;
   background-image:
-    linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.008) 1px, transparent 1px);
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px);
   background-size: 4px 4px;
   mix-blend-mode: soft-light;
 }
