@@ -2,17 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0a0709">
   <title>Setareh Roozbahani — Projects</title>
   <link rel="stylesheet" href="projects.css">
 </head>
 <body>
 
-<a id="name-top" href="index.html">Setareh Roozbahani <span id="name-sub">Architect &amp; Spatial Explorer</span></a>
+<a id="name-top" href="index.html">
+  Setareh Roozbahani
+  <span id="name-sub">Architect &amp; Spatial Explorer</span>
+</a>
 
 <div id="controls">
   <div id="menu-wrapper">
-    <button class="toggle" id="btn-menu">MENU</button>
+    <button class="toggle" id="btn-menu" type="button" aria-expanded="false">MENU</button>
     <div id="menu-dropdown">
       <a href="index.html">HOME</a>
       <a href="research.html">EXPLORATIONS</a>
@@ -21,25 +25,42 @@
   </div>
 </div>
 
-<button id="btn-menu-mobile">MENU</button>
+<button id="btn-menu-mobile" type="button" aria-expanded="false">MENU</button>
 <div id="menu-dropdown-mobile">
   <a href="index.html">HOME</a>
   <a href="research.html">EXPLORATIONS</a>
   <a href="about.html">ABOUT</a>
 </div>
 
-<div id="project-field">
-<div id="field-title">
-  <span class="ft-line1">In the Chaos you might find what you're looking for</span><br>
-  <span class="ft-line2">Just drag or hold a project card</span><br>
-  <span class="ft-line3">Or for a stable view click on the SHOW GRID button</span>
+<main id="project-field">
+  <canvas id="project-canvas" aria-label="Interactive rotating sphere of projects"></canvas>
+
+  <div id="sphere-status" aria-hidden="true">
+    <span id="sphere-status-dot"></span>
+    <span id="sphere-status-num">01</span>
   </div>
-  <canvas id="project-canvas"></canvas>
+
+  <div id="sphere-instruction" class="sphere-copy">
+    <span>Drag to explore</span>
+    <span>the archive</span>
+    <i></i>
+  </div>
+
+  <div id="archive-note" class="sphere-copy">
+    <span>An archive of</span>
+    <span>architectural</span>
+    <span>investigations</span>
+    <span>across time,</span>
+    <span>space, and</span>
+    <span>idea.</span>
+    <i></i>
+  </div>
+
   <div id="cur"></div>
   <div id="cur-ring"></div>
 
-  <!-- overlay when card is tapped/clicked -->
-  <div id="card-overlay">
+  <!-- Expanded project preview -->
+  <div id="card-overlay" aria-hidden="true">
     <div id="overlay-card">
       <canvas id="overlay-canvas"></canvas>
       <div id="overlay-info">
@@ -49,21 +70,20 @@
         <a id="overlay-link" href="#">VIEW PROJECT →</a>
       </div>
     </div>
-    <div id="overlay-close">✕ CLOSE</div>
+    <button id="overlay-close" type="button">✕ CLOSE</button>
   </div>
 
-  <!-- grid view overlay -->
-  <div id="grid-view">
+  <!-- Existing stable grid view -->
+  <div id="grid-view" aria-hidden="true">
     <div id="grid-view-inner"></div>
-    <button id="grid-close-btn">✕ BACK TO CHAOS</button>
+    <button id="grid-close-btn" type="button">✕ BACK TO SPHERE</button>
   </div>
 
-  <!-- show all button -->
-  <button id="show-all-btn">SHOW GRID</button>
+  <button id="show-all-btn" type="button">SHOW GRID</button>
 
-  <!-- nav strip -->
-  <div id="nav-strip"></div>
-</div>
+  <!-- Existing project-number strip -->
+  <nav id="nav-strip" aria-label="Project navigation"></nav>
+</main>
 
 <div id="name-bottom">
   <span id="sig-name">&copy; 2026 Setareh Roozbahani</span>
