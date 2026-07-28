@@ -60,7 +60,7 @@ const PROJECTS = [
     cat: 'Architectural Practice · 2023–2026',
     href: 'comingsoon.html',
     imgSrc: 'images/SJ.png',
-    overlaySrc: 'images/SJoverlay.png',
+    overlaySrc: 'images/SJ.png',
     color: [60, 26, 14]
   },
   {
